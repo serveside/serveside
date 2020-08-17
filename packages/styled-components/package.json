@@ -1,0 +1,29 @@
+{
+  "name": "@maniator/loader-styled-components",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Naftali Lubin <maniator@users.noreply.github.com>",
+  "homepage": "https://github.com/maniator/loader#readme",
+  "license": "MIT",
+  "main": "lib/styled-components.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maniator/loader.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/maniator/loader/issues"
+  },
+  "peerDependencies": {
+    "styled-components": ">=5 <6"
+  }
+}
