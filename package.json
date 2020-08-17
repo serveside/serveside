@@ -7,8 +7,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
     "linfo": "lerna info",
-    "build": "lerna exec --parallel 'BABEL_ENV=build babel src --out-dir dist --source-maps --extensions .js,.jsx --config-file ../../babel.config.js --delete-dir-on-start --no-comments'",
-    "test": "lerna exec --parallel 'NODE_ENV=test jest --passWithNoTests'"
+    "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --ignore **/*.stories.js,**/*.spec.js --delete-dir-on-start --no-comments",
+    "test": "lerna exec --parallel -- jest --passWithNoTests"
   },
   "dependencies": {
     "lerna": "^3.22.1"
@@ -19,6 +19,7 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "babel-plugin-nodejs-import-images": "^1.0.0",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.7.0",
     "express": "^4.17.1",

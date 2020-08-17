@@ -102,11 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# Yarn dependencies https://yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
