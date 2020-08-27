@@ -10,6 +10,10 @@
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "test": "jest"
   },
+  "engines": {
+    "yarn": ">=1 <2",
+    "node": ">=10"
+  },
   "dependencies": {
     "lerna": "^3.22.1"
   },
