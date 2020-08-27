@@ -1,12 +1,32 @@
+const presets = [
+    [
+        "@babel/preset-env", {
+            modules: "commonjs",
+            targets: {
+                node: "current"
+            },
+            useBuiltIns: "usage",
+            corejs: 3
+        }
+    ],
+    [
+        "@babel/preset-react",
+        {
+            development: process.env.NODE_ENV === "development",
+            useBuiltIns: true
+        }
+    ]
+];
+
 const plugins = [
     [
-        'babel-plugin-styled-components',
+        "babel-plugin-styled-components",
         {
             pure: true,
             displayName: true
         }
     ],
-    'babel-plugin-nodejs-import-images',
+    "babel-plugin-file-loader",
     [
         '@babel/plugin-transform-destructuring',
         {
@@ -23,22 +43,17 @@ const plugins = [
         }
     ]
 ];
-const presets = [
-    [
-        '@babel/preset-env', {
-            modules: "commonjs",
-            targets: {
-                node: "current"
-            }
-        }
-    ],
-    [
-        '@babel/preset-react',
-        {
-            development: process.env.NODE_ENV === "development",
-            useBuiltIns: true
-        }
-    ]
-];
 
-module.exports = { plugins, presets };
+const ignore = [
+    "*.stories.js*",
+    "**/dist/**"
+]
+
+module.exports = (api) => {
+    const env = api.env();
+    const isProduction = api.env("production");
+    api.cache.using(() => env);
+    api.cache.invalidate(() => isProduction);
+
+    return ({ plugins, presets, ignore });
+};

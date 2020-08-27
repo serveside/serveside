@@ -1,7 +1,14 @@
 module.exports = {
-    collectCoverage: true,
-    collectCoverageFrom: ["<rootDir>/src/**/*"],
-    coverageReporters: ["json", "lcov", "clover"],
-    coveragePathIgnorePatterns: ["<rootDir>/(?:.+?)/dist/"],
-    testPathIgnorePatterns: ["<rootDir>/(?:.+?)/dist/"]
+
+};
+
+const base = require("./jest.config.base.js");
+
+module.exports = {
+    ...base,
+    projects:
+    [
+        "<rootDir>/packages/*/jest.config.js"
+    ],
+    coverageDirectory: "<rootDir>/coverage/"
 };
