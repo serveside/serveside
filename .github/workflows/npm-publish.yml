@@ -62,7 +62,7 @@ jobs:
       - run: npm ci
       - run: npx lerna bootstrap
       - run: npm run build
-      - run: npx lerna publish from-package --yes
+      - run: npx lerna publish from-package --yes --registry https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
