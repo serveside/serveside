@@ -1,0 +1,33 @@
+{
+  "name": "@maniator/loader-vue",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Naftali Lubin <maniator@users.noreply.github.com>",
+  "homepage": "https://github.com/maniator/loader#readme",
+  "license": "MIT",
+  "main": "dist/core.js",
+  "directories": {
+    "dist": "dist",
+    "src": "src"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maniator/loader.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/maniator/loader/issues"
+  },
+  "peerDependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/runtime-corejs3": "^7.11.2",
+    "vue": "^2.6.12",
+    "vue-server-renderer": "^2.6.12"
+  }
+}
