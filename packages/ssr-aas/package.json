@@ -14,7 +14,7 @@
     "src": "src"
   },
   "files": [
-    "dist",
+    "cmds",
     "src"
   ],
   "repository": {
