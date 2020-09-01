@@ -11,20 +11,26 @@ async function htmlLoader (req, res, next) {
       template: ResolvedComponent
     });
 
-    const componentString = await renderer.renderToString(vueComponent);
+    try {
+      const componentString = await renderer.renderToString(vueComponent);
 
-    res.locals.html = `
-        <div 
-            data-ssr-aas-component="${component}" 
-            data-ssr-aas-id="se_embed_react_ssr_${req.id}"
-        >${componentString}</div>
-        <script>
-            window.__SSR_AAS_LOAD_PROPS__ ||= {};
-            window.__SSR_AAS_LOAD_PROPS__[${req.id}] = ${JSON.stringify(componentProps, null, 3)};
-        </script>
-    `;
+      res.locals.html = `
+          <div 
+              data-ssr-aas-component="${component}" 
+              data-ssr-aas-id="se_embed_react_ssr_${req.id}"
+          >${componentString}</div>
+          <script>
+              window.__SSR_AAS_LOAD_PROPS__ ||= {};
+              window.__SSR_AAS_LOAD_PROPS__[${req.id}] = ${JSON.stringify(componentProps, null, 3)};
+          </script>
+      `;
 
-    next();
+      next();
+    } catch (error) {
+      res.locals.error = error;
+
+      next("route");
+    }
 }
 
 
