@@ -11,7 +11,7 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'vue'],
   rules: {
     'react/jsx-props-no-spreading': 0,
   },
