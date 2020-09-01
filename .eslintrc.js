@@ -3,7 +3,11 @@ module.exports = {
     browser: false,
     es2020: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:vue/vue3-recommended',
+    'airbnb',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
