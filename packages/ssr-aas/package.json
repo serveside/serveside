@@ -10,7 +10,7 @@
     "access": "public"
   },
   "directories": {
-    "dist": "dist",
+    "cmds": "cmds",
     "src": "src"
   },
   "files": [

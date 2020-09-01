@@ -5,7 +5,7 @@
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/ssr-aas#readme",
   "license": "MIT",
-  "main": "dist/core.js",
+  "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
   },
