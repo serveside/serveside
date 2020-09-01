@@ -53,9 +53,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Checkout and pull branch
-        run: git checkout "${GITHUB_REF:11}" && git pull
-        
+      - name: Checkout release branch
+        run: git checkout -b $GITHUB_SHA-release
+
       - run: npm ci
       - run: npx lerna bootstrap
       - run: npm run build
