@@ -1,11 +1,14 @@
 {
   "name": "@serveside/ssr-aas-core",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.5",
   "description": "> TODO: description",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/ssr-aas#readme",
   "license": "MIT",
-  "main": "dist/core.js",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
     "dist": "dist",
     "src": "src"

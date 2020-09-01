@@ -1,13 +1,16 @@
 {
   "name": "@serveside/ssr-aas",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.5",
   "description": "> TODO: description",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/ssr-aas#readme",
   "license": "MIT",
   "bin": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
-    "dist": "dist",
+    "cmds": "cmds",
     "src": "src"
   },
   "files": [
