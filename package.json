@@ -5,8 +5,7 @@
     "bootstrap": "lerna bootstrap",
     "linfo": "lerna info",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
-    "test": "jest",
-    "version": "lerna version --conventional-commits --create-release github"
+    "test": "jest"
   },
   "engines": {
     "yarn": ">=1 <2",
