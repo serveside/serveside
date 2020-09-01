@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
+      - run: npx lerna bootstrap
       - run: npm test
       - run: npm run build
 
@@ -44,7 +45,9 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+      - run: npx lerna bootstrap
       - run: npm run build
-      - run: npx lerna publish
+      - run: npx lerna publish --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
