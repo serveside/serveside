@@ -30,14 +30,14 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Install dependencies
       run: |
-        yarn install 
-        yarn bootstrap
+        npm install 
+        npm run bootstrap
         
     - name: Build packages
-      run: yarn build
+      run: npm run build
       
     - name: Test packages
-      run: yarn test
+      run: npm test
 
     - name: Upload to Codecov
       uses: codecov/codecov-action@v1
