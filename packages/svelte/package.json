@@ -1,0 +1,36 @@
+{
+  "name": "@serveside/ssr-aas-svelte",
+  "version": "0.0.1-alpha.4",
+  "description": "> TODO: description",
+  "author": "Moshe Uminer <47164590+mosheduminer@users.noreply.github.com>",
+  "homepage": "https://github.com/serveside/ssr-aas#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "dist": "dist",
+    "src": "src"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serveside/ssr-aas.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/serveside/ssr-aas/issues"
+  },
+  "peerDependencies": {
+    "svelte": "^3.24.1"
+  }
+}
