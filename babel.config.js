@@ -19,13 +19,6 @@ const presets = [
 ];
 
 const plugins = [
-    [
-        "babel-plugin-styled-components",
-        {
-            pure: true,
-            displayName: true
-        }
-    ],
     "babel-plugin-file-loader",
     [
         '@babel/plugin-transform-destructuring',
