@@ -6,6 +6,9 @@
   "homepage": "https://github.com/serveside/ssr-aas#readme",
   "license": "MIT",
   "bin": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "directories": {
     "dist": "dist",
     "src": "src"
