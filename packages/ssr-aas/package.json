@@ -17,7 +17,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/serveside/ssr-aas.git"
-  },
+  }, 
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
     "start": "node ."
