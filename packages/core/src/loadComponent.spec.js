@@ -1,9 +1,9 @@
 import loadComponent from "./loadComponent";
 import path from "path";
-import Component from "../../test-helpers/component";
+import Component from "../test-helpers/component";
 
 describe("loadComponent", () => {
-    const loadingComponent = loadComponent(path.join(__dirname, "../../test-helpers"));
+    const loadingComponent = loadComponent(path.join(__dirname, "../test-helpers"));
     it("should set locals to the correct value", async () => {
         const res = {};
         await loadingComponent(
@@ -20,7 +20,7 @@ describe("loadComponent", () => {
             locals: {
                 component: "component",
                 componentProps: {},
-                resolvedComponent: Component
+                ResolvedComponent: Component
             }
         });
     });

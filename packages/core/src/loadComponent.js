@@ -8,8 +8,8 @@ export default entriesLocation => async (req, res, next) => {
     
     try {
         const resolvePath = path.join(entriesLocation, component);
-        const { default: resolvedComponent } = await import(resolvePath);
-        res.locals = { resolvedComponent, ...res.locals };
+        const { default: ResolvedComponent } = await import(resolvePath);
+        res.locals = { ResolvedComponent, ...res.locals };
 
         next();
     } catch (error) {
