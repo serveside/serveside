@@ -44,6 +44,18 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
+
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name '@maniator'
+          git config --global user.email 'maniator@users.noreply.github.com'
+          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/serveside/ssr-aas
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Checkout and pull branch
+        run: git checkout "${GITHUB_REF:11}" && git pull
+        
       - run: npm ci
       - run: npx lerna bootstrap
       - run: npm run build

@@ -7,7 +7,9 @@
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "test": "jest"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "engines": {
     "yarn": ">=1 <2",
     "node": ">=10"
