@@ -1,11 +1,8 @@
 {
-  "name": "@maniator/loader",
+  "name": "@maniator/ssr-aas",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --use-workspaces",
+    "bootstrap": "lerna bootstrap",
     "linfo": "lerna info",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "test": "jest"
@@ -18,6 +15,9 @@
     "./**/*.{js,jsx}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    "./README.md": [
+      "doctoc --notitle"
     ]
   },
   "husky": {
@@ -38,6 +38,7 @@
     "babel-jest": "^26.3.0",
     "babel-plugin-nodejs-import-images": "^1.0.0",
     "core-js": "^3.6.5",
+    "doctoc": "^1.4.0",
     "eslint": "^7.8.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",

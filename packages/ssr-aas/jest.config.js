@@ -3,8 +3,8 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: '@maniator/ssr-aas-core',
-  displayName: 'Core',
+  name: '@maniator/ssr-aas',
+  displayName: 'Bin',
   rootDir: '.',
   roots: ['<rootDir>/src'],
 };

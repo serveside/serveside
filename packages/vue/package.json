@@ -1,9 +1,9 @@
 {
-  "name": "@maniator/loader-vue",
+  "name": "@maniator/ssr-aas-vue",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
-  "homepage": "https://github.com/maniator/loader#readme",
+  "homepage": "https://github.com/maniator/ssr-aas#readme",
   "license": "MIT",
   "main": "dist/core.js",
   "directories": {
@@ -16,13 +16,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maniator/loader.git"
+    "url": "git+https://github.com/maniator/ssr-aas.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/maniator/loader/issues"
+    "url": "https://github.com/maniator/ssr-aas/issues"
   },
   "peerDependencies": {
     "vue": "^2.6.12",

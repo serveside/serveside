@@ -18,7 +18,7 @@ const presets = [
 ];
 
 const plugins = [
-  'babel-plugin-nodejs-import-images',
+  //  'babel-plugin-nodejs-import-images',
   [
     '@babel/plugin-transform-destructuring',
     {
