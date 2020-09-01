@@ -1,6 +1,6 @@
 # SSR As A Service
 
-[![github actions](https://github.com/maniator/ssr-aas/workflows/CI/badge.svg)](https://github.com/maniator/ssr-aas/actions)
+[![github actions](https://github.com/serveside/ssr-aas/workflows/CI/badge.svg)](https://github.com/serveside/ssr-aas/actions)
 [![codecov](https://codecov.io/gh/serveside/ssr-aas/branch/main/graph/badge.svg)](https://codecov.io/gh/serveside/ssr-aas)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->

@@ -3,7 +3,7 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: '@maniator/ssr-aas-react',
+  name: '@serveside/ssr-aas-react',
   displayName: 'React',
   rootDir: '.',
   roots: ['<rootDir>/src'],

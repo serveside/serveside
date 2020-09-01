@@ -3,7 +3,7 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: '@maniator/ssr-aas-vue',
+  name: '@serveside/ssr-aas-vue',
   displayName: 'Vue',
   rootDir: '.',
   roots: ['<rootDir>/src'],

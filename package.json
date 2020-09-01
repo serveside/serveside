@@ -1,5 +1,5 @@
 {
-  "name": "@maniator/ssr-aas",
+  "name": "@serveside/ssr-aas",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",

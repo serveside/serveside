@@ -11,7 +11,7 @@ exports.builder = {
 exports.handler = ({ service }) => {
   console.log(`Starting a new ${service} service`);
 
-  const command = `npm install @maniator/ssr-aas-core @maniator/ssr-aas-${service}`;
+  const command = `npm install @serveside/ssr-aas-core @serveside/ssr-aas-${service}`;
 
   console.log('Running command', `"${command}"`);
 
