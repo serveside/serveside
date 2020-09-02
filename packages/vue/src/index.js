@@ -20,8 +20,8 @@ async function htmlLoader(req, res, next) {
               data-serveside-id="se_embed_react_ssr_${req.id}"
           >${componentString}</div>
           <script>
-              window.__SSR_AAS_LOAD_PROPS__ ||= {};
-              window.__SSR_AAS_LOAD_PROPS__[${req.id}] = ${JSON.stringify(
+              window.__SERVESIDE_LOAD_PROPS__ ||= {};
+              window.__SERVESIDE_LOAD_PROPS__[${req.id}] = ${JSON.stringify(
   componentProps,
   null,
   3,
@@ -46,9 +46,9 @@ function errorHtmlLoader(req, res, next) {
             data-serveside-id="se_embed_react_ssr_${req.id}"
         ></div>
         <script>              
-            window.__SSR_AAS_LOAD_ERROR__ = ${JSON.stringify(error.message)};
-            window.__SSR_AAS_LOAD_PROPS__ ||= {};
-            window.__SSR_AAS_LOAD_PROPS__[${req.id}] = ${JSON.stringify(
+            window.__SERVESIDE_LOAD_ERROR__ = ${JSON.stringify(error.message)};
+            window.__SERVESIDE_LOAD_PROPS__ ||= {};
+            window.__SERVESIDE_LOAD_PROPS__[${req.id}] = ${JSON.stringify(
   componentProps,
   null,
   3,

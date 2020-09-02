@@ -1,5 +1,6 @@
 import { htmlLoader, errorHtmlLoader } from './index';
-import Component from '../test-helpers/compiledComponent';
+import Component from '../test-helpers/component';
+import ReactDomServer from 'react-dom/server';
 
 describe('render HTML', () => {
   it('should return rendered HTML of component', async () => {
@@ -10,7 +11,7 @@ describe('render HTML', () => {
       {
         query: {},
         params: {
-          component: 'Component.svelte',
+          component: 'Component',
         },
         id: 3,
         locals: {
@@ -22,17 +23,13 @@ describe('render HTML', () => {
       res,
       () => null,
     );
-    expect(res.locals.html).toEqual(`
-          <style>h1.svelte-c33f9i{background-color:red}</style>
-          <div
-              data-serveside-component="component"
-              data-serveside-id="se_embed_svelte_ssr_3"
-          ><h1 class="svelte-c33f9i">Hello world!</h1></div>
-          <script>
-              window.__SERVESIDE_LOAD_PROPS__ ||= {};
-              window.__SERVESIDE_LOAD_PROPS__[3] = {};
-          </script>
-      `);
+    const html = ReactDomServer.renderToStaticMarkup(res.locals.jsx);
+    expect(html.trim()).toEqual(`
+    <div data-serveside-component="component" data-serveside-id="se_embed_react_ssr_3"><div data-reactroot="">I am a test component</div></div><script>
+                window.__SERVESIDE_LOAD_PROPS__ ||= {};
+                window.__SERVESIDE_LOAD_PROPS__[3] = {};
+                </script>
+      `.trim());
   });
   it('should set an error', async () => {
     const res = {
@@ -58,7 +55,7 @@ describe('render HTML', () => {
   });
 });
 
-describe('handle svelte rendering error', () => {
+describe('handle react rendering error', () => {
   it('should return error html', async () => {
     const res = {
       locals: {},
@@ -76,6 +73,6 @@ describe('handle svelte rendering error', () => {
       res,
       () => null,
     );
-    expect(res.locals.html).not.toBeUndefined();
+    expect(res.locals.jsx).not.toBeUndefined();
   });
 });
