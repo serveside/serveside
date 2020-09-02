@@ -1,5 +1,4 @@
 {
-  "name": "@serveside/serveside",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
