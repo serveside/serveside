@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.0.1-alpha.10](https://github.com/serveside/serveside/compare/v0.0.1-alpha.8...v0.0.1-alpha.10) (2020-09-02)
 
-**Note:** Version bump only for package @serveside/react
-
-
-
-
-
-## [0.0.1-alpha.3](https://github.com/serveside/serveside/compare/v0.0.1-alpha.2...v0.0.1-alpha.3) (2020-09-01)
-
-**Note:** Version bump only for package @serveside/serveside-react
+**Note:** Version bump only for package @serveside/svelte
