@@ -84,3 +84,20 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GH_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  cleanup:
+    needs: 
+      - publish-npm
+      - publish-gpr
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Cleanup release branch
+        run: git push -d origin $GITHUB_SHA-release
+        env:
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
