@@ -10,8 +10,8 @@ function core({
   entriesLocation = __dirname,
   plugins = [],
   htmlLoader = () => null,
-  errorHtmlLoader = htmlLoader,
-  htmlRenderer = () => null,
+  errorHtmlLoader = () => null,
+  htmlRenderer = (res) => res.send('Nothing'),
 }) {
   loaderRouter.use(
     '/:component',
