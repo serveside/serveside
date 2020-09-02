@@ -1,4 +1,4 @@
-const { execSync } = require('child_process');
+const install = require('install-packages');
 
 /* eslint-disable no-unused-expressions */
 exports.command = 'create [service]';
@@ -8,16 +8,14 @@ exports.builder = {
     default: 'react',
   },
 };
-exports.handler = ({ service }) => {
+exports.handler = async ({ service }) => {
   console.log(`Starting a new ${service} service`);
 
-  const command = `npm install @serveside/core @serveside/${service}`;
-
-  console.log('Running command', `"${command}"`);
-
   try {
-    const output = execSync(command).toString().trim();
-    console.log('Installed dependencies', output);
+    await install({
+      packages: ['@serveside/core', `@serveside/${service}`],
+      installPeers: true,
+    });
   } catch (error) {
     console.log(error);
   }
