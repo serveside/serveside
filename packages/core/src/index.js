@@ -11,7 +11,7 @@ function core({
   plugins = [],
   htmlLoader = () => null,
   errorHtmlLoader = () => null,
-  htmlRenderer = (res) => res.send('Nothing'),
+  htmlRenderer = (_req, res) => res.send('Nothing'),
 }) {
   loaderRouter.use(
     '/:component',
