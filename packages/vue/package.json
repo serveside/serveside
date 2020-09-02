@@ -1,9 +1,9 @@
 {
-  "name": "@serveside/ssr-aas-vue",
+  "name": "@serveside/vue",
   "version": "0.0.1-alpha.5",
   "description": "> TODO: description",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
-  "homepage": "https://github.com/serveside/ssr-aas#readme",
+  "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "publishConfig": {
@@ -19,13 +19,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/serveside/ssr-aas.git"
+    "url": "git+https://github.com/serveside/serveside.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/serveside/ssr-aas/issues"
+    "url": "https://github.com/serveside/serveside/issues"
   },
   "peerDependencies": {
     "vue": "^2.6.12",

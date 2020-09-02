@@ -3,7 +3,7 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: '@serveside/ssr-aas-vue',
+  name: '@serveside/vue',
   displayName: 'Vue',
   rootDir: '.',
   roots: ['<rootDir>/src'],

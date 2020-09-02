@@ -1,7 +1,7 @@
 # SSR As A Service
 
-[![github actions](https://github.com/serveside/ssr-aas/workflows/CI/badge.svg)](https://github.com/serveside/ssr-aas/actions)
-[![codecov](https://codecov.io/gh/serveside/ssr-aas/branch/main/graph/badge.svg)](https://codecov.io/gh/serveside/ssr-aas)
+[![github actions](https://github.com/serveside/serveside/workflows/CI/badge.svg)](https://github.com/serveside/serveside/actions)
+[![codecov](https://codecov.io/gh/serveside/serveside/branch/main/graph/badge.svg)](https://codecov.io/gh/serveside/serveside)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->

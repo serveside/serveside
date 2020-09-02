@@ -3,7 +3,7 @@ const base = require('../../jest.config.base.js');
 
 module.exports = {
   ...base,
-  name: '@serveside/ssr-aas-react',
+  name: '@serveside/react',
   displayName: 'React',
   rootDir: '.',
   roots: ['<rootDir>/src'],

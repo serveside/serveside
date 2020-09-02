@@ -25,8 +25,8 @@ describe('render HTML', () => {
     expect(res.locals.html).toEqual(`
           <style>h1.svelte-c33f9i{background-color:red}</style>
           <div
-              data-ssr-aas-component="component"
-              data-ssr-aas-id="se_embed_svelte_ssr_3"
+              data-serveside-component="component"
+              data-serveside-id="se_embed_svelte_ssr_3"
           ><h1 class="svelte-c33f9i">Hello world!</h1></div>
           <script>
               window.__SSR_AAS_LOAD_PROPS__ ||= {};

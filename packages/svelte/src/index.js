@@ -7,8 +7,8 @@ async function htmlLoader(req, res, next) {
     res.locals.html = `
           <style>${css.code}</style>
           <div
-              data-ssr-aas-component="${component}"
-              data-ssr-aas-id="se_embed_svelte_ssr_${req.id}"
+              data-serveside-component="${component}"
+              data-serveside-id="se_embed_svelte_ssr_${req.id}"
           >${html}</div>
           <script>
               window.__SSR_AAS_LOAD_PROPS__ ||= {};
@@ -33,8 +33,8 @@ function errorHtmlLoader(req, res, next) {
 
   res.locals.html = `
         <div 
-            data-ssr-aas-component="${component}" 
-            data-ssr-aas-id="se_embed_svelte_ssr_${req.id}"
+            data-serveside-component="${component}" 
+            data-serveside-id="se_embed_svelte_ssr_${req.id}"
         ></div>
         <script>
             window.__SSR_AAS_LOAD_ERROR__ = ${JSON.stringify(error.message)};

@@ -1,5 +1,5 @@
 {
-  "name": "@serveside/ssr-aas",
+  "name": "@serveside/serveside",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
