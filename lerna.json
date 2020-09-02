@@ -1,10 +1,12 @@
 {
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "npmClient": "npm",
-  "publish": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "packages": [
     "packages/*"
-  ]
+  ],
+  "command": {
+    "version": {
+      "message": "chore(release): publish %v"
+    }
+  }
 }

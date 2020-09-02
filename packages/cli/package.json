@@ -1,11 +1,13 @@
 {
   "name": "@serveside/cli",
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "description": "> TODO: description",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
-  "bin": "index.js",
+  "bin": {
+    "serveside": "index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
