@@ -5,7 +5,9 @@
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
-  "bin": "index.js",
+  "bin": {
+    "serveside": "index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
