@@ -1,22 +1,28 @@
 const install = require('install-packages');
+const chalk = require('chalk');
 
-/* eslint-disable no-unused-expressions */
-exports.command = 'create [service]';
+const logInfo = require('../utils/log/info');
+const logError = require('../utils/log/error');
+
+exports.command = ['create', '$0'];
 exports.desc = 'Create a new ssr service';
 exports.builder = {
   service: {
     default: 'react',
   },
 };
+
 exports.handler = async ({ service }) => {
-  console.log(`Starting a new ${service} service`);
+  logInfo('Starting a new %s service', chalk.underline(service));
 
   try {
+    logInfo('Installing npm core services...');
     await install({
       packages: ['@serveside/core', `@serveside/${service}`],
       installPeers: true,
     });
-  } catch (error) {
-    console.log(error);
+    logInfo('Finished installing npm core services...');
+  } catch (err) {
+    logError(err);
   }
 };
