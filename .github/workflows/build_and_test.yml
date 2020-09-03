@@ -12,9 +12,8 @@ on:
   
 jobs:
   # This workflow contains a single job called "build"
-  build_and_test:
+  build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
 
     steps:
     - uses: actions/checkout@master
@@ -43,46 +42,3 @@ jobs:
         file: ./coverage/clover.xml
         fail_ci_if_error: true
         directory: ./coverage/lcov-report/
-
-  build_and_deploy_coverage:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.1.1
-        with:
-          node-version: '12.x'
-
-      - name: Configure CI Git User
-        run: |
-          git config --global user.name '@maniator'
-          git config --global user.email 'maniator@users.noreply.github.com'
-          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/serveside/serveside
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - run: |
-          npm ci
-          npx lerna bootstrap
-          npm run build
-          npm test
-
-      - name: Upload to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/clover.xml
-          fail_ci_if_error: true
-          directory: ./coverage/lcov-report/
-
-      - name: Deploy coverage branch
-        run: |
-          git fetch origin
-          git checkout code-coverage
-          git push --set-upstream origin code-coverage
-          git add --force ./coverage/lcov-report
-          git commit -am"Update coverage for serveside"
-          git push
-        env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
