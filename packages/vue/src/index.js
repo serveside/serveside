@@ -20,7 +20,7 @@ async function htmlLoader(req, res, next) {
     res.locals.html = `
           <div
               data-serveside-component="${component}"
-              data-serveside-id="se_embed_vue_ssr_${req.id}"
+              data-serveside-id="serveside_vue_ssr_${req.id}"
           >${componentString}</div>
           <script>
               window.__SERVESIDE_LOAD_PROPS__ ||= {};
@@ -46,7 +46,7 @@ function errorHtmlLoader(req, res, next) {
   res.locals.html = `
         <div 
             data-serveside-component="${component}" 
-            data-serveside-id="se_embed_vue_ssr_${req.id}"
+            data-serveside-id="serveside_vue_ssr_${req.id}"
         ></div>
         <script>              
             window.__SERVESIDE_LOAD_ERROR__ = ${JSON.stringify(error.message)};
