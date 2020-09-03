@@ -1,7 +1,7 @@
 # SSR As A Service
 
 [![github actions](https://github.com/serveside/serveside/workflows/CI/badge.svg)](https://github.com/serveside/serveside/actions)
-[![codecov](https://codecov.io/gh/serveside/serveside/branch/main/graph/badge.svg)](https://codecov.io/gh/serveside/serveside)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dc6838abec12c7bec10a/test_coverage)](https://codeclimate.com/github/serveside/serveside/test_coverage)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -11,7 +11,6 @@
 
 
 - [What is this](#what-is-this)
-- [Installation](#installation)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
