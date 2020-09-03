@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2.1.1
         with:
-          node-version: 12
+          node-version: '12.x'
 
       - name: Configure CI Git User
         run: |
@@ -25,7 +25,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Checkout release branch
-        run: git checkout -b $GITHUB_SHA-release && git push --set-upstream origin $GITHUB_SHA-release
+        run: |
+          git checkout -b $GITHUB_SHA-release
+          git push --set-upstream origin $GITHUB_SHA-release
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -40,10 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2.1.1
         with:
-          node-version: 12
+          node-version: '12.x'
           registry-url: https://npm.pkg.github.com/
+
       - run: npm ci
       - run: npx lerna bootstrap
       - run: npm run build
@@ -60,10 +63,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2.1.1
         with:
-          node-version: 12
+          node-version: '12.x'
           registry-url: https://registry.npmjs.org/
+
       - run: npm ci
       - run: npx lerna bootstrap
       - run: npm run build

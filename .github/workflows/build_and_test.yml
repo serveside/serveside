@@ -46,3 +46,32 @@ jobs:
         file: ./coverage/clover.xml
         fail_ci_if_error: true
         directory: ./coverage/lcov-report/
+
+  publish-coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: '12.x'
+
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name '@maniator'
+          git config --global user.email 'maniator@users.noreply.github.com'
+          git remote set-url origin https://$GITHUB_ACTOR:$GH_TOKEN@github.com/serveside/serveside
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Deploy coverage branch
+        run: |
+          git checkout -b code-coverage
+          git push --set-upstream origin code-coverage
+          git add --force coverage/lcov-report
+          git commit -am"Update coverage for serveside"
+          git push
+        env:
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
