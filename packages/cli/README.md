@@ -6,6 +6,7 @@
 
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Help](#help)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -21,13 +22,13 @@ yarn global add @serveside/cli
 Can can be used like so:
 
 ```bash
-serveside create [service]
+serveside [--service=service]
 ```
 
 Can also be used via `npx` like so:
 
 ```bash
-npx @serveside/cli create [service]
+npx @serveside/cli [--service=service]
 ```
 
 ## Configuration
@@ -44,3 +45,7 @@ For example:
 ```
 
 By default if no service is set, it will install the `react` service.
+
+## Help
+
+Can view the help in the terminal by passing `--help` to the cli
