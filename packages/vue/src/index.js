@@ -11,7 +11,7 @@ async function htmlLoader(req, res, next) {
       ServeSideComponent: ResolvedComponent,
     },
     data: componentProps,
-    template: '<ServeSideComponent></ServeSideComponent>',
+    template: '<ServeSideComponent/>',
   });
 
   try {
