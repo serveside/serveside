@@ -1,8 +1,8 @@
 const install = require('install-packages');
 const chalk = require('chalk');
 
-const logInfo = require('../log/info');
-const logError = require('../log/error');
+const logInfo = require('../utils/log/info');
+const logError = require('../utils/log/error');
 
 exports.command = 'create [service]';
 exports.desc = 'Create a new ssr service';
