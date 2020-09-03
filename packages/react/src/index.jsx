@@ -16,7 +16,7 @@ function htmlLoader(req, res, next) {
       <>
         <div
           data-serveside-component={component}
-          data-serveside-id={`serveside_react_ssr_${req.id}`}
+          data-serveside-id={`serveside_${req.id}`}
           dangerouslySetInnerHTML={{ __html: componentString }}
         />
         <script
@@ -47,7 +47,7 @@ function errorHtmlLoader(req, res, next) {
     <>
       <div
         data-serveside-component={component}
-        data-serveside-id={`serveside_react_ssr_${req.id}`}
+        data-serveside-id={`serveside_${req.id}`}
       />
       <script
         dangerouslySetInnerHTML={{

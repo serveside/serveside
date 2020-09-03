@@ -25,7 +25,7 @@ describe('render HTML', () => {
     expect(res.locals.html).toEqual(`
           <div
               data-serveside-component="component"
-              data-serveside-id="serveside_vue_ssr_3"
+              data-serveside-id="serveside_3"
           ><div data-server-rendered="true">This is a test component</div></div>
           <script>
               window.__SERVESIDE_LOAD_PROPS__ ||= {};

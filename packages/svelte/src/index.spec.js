@@ -26,7 +26,7 @@ describe('render HTML', () => {
           <style>h1.svelte-c33f9i{background-color:red}</style>
           <div
               data-serveside-component="component"
-              data-serveside-id="serveside_svelte_ssr_3"
+              data-serveside-id="serveside_3"
           ><h1 class="svelte-c33f9i">Hello world!</h1></div>
           <script>
               window.__SERVESIDE_LOAD_PROPS__ ||= {};

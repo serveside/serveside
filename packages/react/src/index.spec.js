@@ -24,8 +24,9 @@ describe('render HTML', () => {
       () => null,
     );
     const html = ReactDomServer.renderToStaticMarkup(res.locals.jsx);
-    expect(html.trim()).toEqual(`
-    <div data-serveside-component="component" data-serveside-id="serveside_react_ssr_3"><div data-reactroot="">I am a test component</div></div><script>
+    expect(html.trim()).toEqual(
+      `
+    <div data-serveside-component="component" data-serveside-id="serveside_3"><div data-reactroot="">I am a test component</div></div><script>
                 window.__SERVESIDE_LOAD_PROPS__ ||= {};
                 window.__SERVESIDE_LOAD_PROPS__[3] = {};
                 </script>
