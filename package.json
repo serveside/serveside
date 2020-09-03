@@ -5,7 +5,8 @@
     "changelog": "lerna-changelog",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "release": "lerna version --conventional-commits --create-release github",
-    "test": "cross-env FORCE_COLOR=true jest"
+    "test": "cross-env FORCE_COLOR=true jest",
+    "commit": "cz"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.3.0",
     "babel-plugin-nodejs-import-images": "^1.0.0",
+    "commitizen": "^4.2.1",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.3.0",

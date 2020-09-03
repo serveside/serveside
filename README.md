@@ -3,6 +3,7 @@
 [![github actions](https://github.com/serveside/serveside/workflows/CI/badge.svg)](https://github.com/serveside/serveside/actions)
 [![codecov](https://codecov.io/gh/serveside/serveside/branch/main/graph/badge.svg)](https://codecov.io/gh/serveside/serveside)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
