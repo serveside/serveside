@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { isValidElementType } from "react-is";
+import { isValidElementType } from 'react-is';
 
 function htmlLoader(req, res, next) {
   const { ResolvedComponent, componentProps, component } = req.locals;
@@ -52,7 +52,9 @@ function errorHtmlLoader(req, res, next) {
       <script
         dangerouslySetInnerHTML={{
           __html: `
-              window.__SERVESIDE_LOAD_ERROR__ = ${JSON.stringify(error.message)};
+              window.__SERVESIDE_LOAD_ERROR__ = ${JSON.stringify(
+            error.message,
+          )};
               window.__SERVESIDE_LOAD_PROPS__ ||= {};
               window.__SERVESIDE_LOAD_PROPS__[${req.id}] = ${JSON.stringify(
             componentProps,

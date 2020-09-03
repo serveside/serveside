@@ -5,6 +5,11 @@
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serveside/serveside.git",
+    "directory": "packages/cli"
+  },
   "bin": {
     "serveside": "index.js"
   },
@@ -19,10 +24,6 @@
     "cmds",
     "src"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/serveside/serveside.git"
-  },
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
     "start": "node ."

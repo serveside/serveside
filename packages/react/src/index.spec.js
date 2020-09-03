@@ -1,6 +1,6 @@
+import ReactDomServer from 'react-dom/server';
 import { htmlLoader, errorHtmlLoader } from './index';
 import Component from '../test-helpers/component';
-import ReactDomServer from 'react-dom/server';
 
 describe('render HTML', () => {
   it('should return rendered HTML of component', async () => {
@@ -24,12 +24,14 @@ describe('render HTML', () => {
       () => null,
     );
     const html = ReactDomServer.renderToStaticMarkup(res.locals.jsx);
-    expect(html.trim()).toEqual(`
+    expect(html.trim()).toEqual(
+      `
     <div data-serveside-component="component" data-serveside-id="se_embed_react_ssr_3"><div data-reactroot="">I am a test component</div></div><script>
                 window.__SERVESIDE_LOAD_PROPS__ ||= {};
                 window.__SERVESIDE_LOAD_PROPS__[3] = {};
                 </script>
-      `.trim());
+      `.trim(),
+    );
   });
   it('should set an error', async () => {
     const res = {

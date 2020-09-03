@@ -5,6 +5,11 @@
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serveside/serveside.git",
+    "directory": "packages/vue"
+  },
   "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
@@ -17,10 +22,6 @@
     "dist",
     "src"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/serveside/serveside.git"
-  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
