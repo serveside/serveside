@@ -3,13 +3,10 @@
 
 
 - [Change Log](#change-log)
-- [0.1.0-alpha.2 (2020-09-03)](#010-alpha2-2020-09-03)
-    - [Bug Fixes](#bug-fixes)
-    - [Features](#features)
 - [0.1.0-alpha.1 (2020-09-03)](#010-alpha1-2020-09-03)
-    - [Bug Fixes](#bug-fixes-1)
+    - [Bug Fixes](#bug-fixes)
 - [0.1.0-alpha.0 (2020-09-03)](#010-alpha0-2020-09-03)
-    - [Features](#features-1)
+    - [Features](#features)
   - [0.0.1-alpha.14 (2020-09-02)](#001-alpha14-2020-09-02)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -18,22 +15,6 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.1.0-alpha.2](https://github.com/serveside/serveside/compare/v0.1.0-alpha.1...v0.1.0-alpha.2) (2020-09-03)
-
-
-### Bug Fixes
-
-* update cz config ([8092635](https://github.com/serveside/serveside/commit/8092635ee43090ca8eb28e447e9e703ac44f699c))
-
-
-### Features
-
-* **make repo commitizen ready:** make repo commitizen ready ([ae3e520](https://github.com/serveside/serveside/commit/ae3e520a566a65c0b8967c994e6fe6d246e7f43e))
-
-
-
-
 
 # [0.1.0-alpha.1](https://github.com/serveside/serveside/compare/v0.1.0-alpha.0...v0.1.0-alpha.1) (2020-09-03)
 
