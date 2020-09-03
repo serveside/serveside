@@ -3,5 +3,8 @@ plugins:
   eslint:
     enabled: true
     channel: "eslint-7"
+    extensions:
+      - .js
+      - .jsx
   fixme:
     enabled: true
