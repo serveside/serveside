@@ -77,7 +77,8 @@ jobs:
 
       - name: Deploy coverage branch
         run: |
-          git checkout -b code-coverage
+          git fetch origin
+          git checkout code-coverage
           git push --set-upstream origin code-coverage
           git add --force ./coverage/lcov-report
           git commit -am"Update coverage for serveside"
