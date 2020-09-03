@@ -28,7 +28,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "npx lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "dependencies": {
@@ -40,6 +41,8 @@
     "@babel/plugin-transform-destructuring": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^10.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^26.3.0",
     "babel-plugin-nodejs-import-images": "^1.0.0",
@@ -68,10 +71,5 @@
     "svelte": "^3.24.1",
     "vue": "^2.6.12",
     "vue-server-renderer": "^2.6.12"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
