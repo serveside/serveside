@@ -18,11 +18,11 @@
   },
   "directories": {
     "cmds": "cmds",
-    "src": "src"
+    "utils": "utils"
   },
   "files": [
     "cmds",
-    "src"
+    "utils"
   ],
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
