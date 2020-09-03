@@ -3,6 +3,7 @@
 
 
 - [Change Log](#change-log)
+- [0.1.0-alpha.3 (2020-09-03)](#010-alpha3-2020-09-03)
 - [0.1.0-alpha.1 (2020-09-03)](#010-alpha1-2020-09-03)
 - [0.1.0-alpha.0 (2020-09-03)](#010-alpha0-2020-09-03)
   - [0.0.1-alpha.13 (2020-09-02)](#001-alpha13-2020-09-02)
@@ -14,6 +15,14 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.1.0-alpha.3](https://github.com/serveside/serveside/compare/v0.1.0-alpha.2...v0.1.0-alpha.3) (2020-09-03)
+
+**Note:** Version bump only for package @serveside/svelte
+
+
+
+
 
 
 
