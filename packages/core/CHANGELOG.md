@@ -3,6 +3,8 @@
 
 
 - [Change Log](#change-log)
+- [0.1.0-alpha.4 (2020-09-03)](#010-alpha4-2020-09-03)
+    - [Bug Fixes](#bug-fixes)
 - [0.1.0-alpha.0 (2020-09-03)](#010-alpha0-2020-09-03)
   - [0.0.1-alpha.11 (2020-09-02)](#001-alpha11-2020-09-02)
   - [0.0.1-alpha.4 (2020-09-01)](#001-alpha4-2020-09-01)
@@ -14,6 +16,17 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.1.0-alpha.4](https://github.com/serveside/serveside/compare/v0.1.0-alpha.3...v0.1.0-alpha.4) (2020-09-03)
+
+
+### Bug Fixes
+
+* update failed lint checks ([d1a6375](https://github.com/serveside/serveside/commit/d1a6375a0051c4e9af08d63b5df53f648bff74fd))
+
+
+
+
 
 # [0.1.0-alpha.0](https://github.com/serveside/serveside/compare/v0.0.1-alpha.14...v0.1.0-alpha.0) (2020-09-03)
 
