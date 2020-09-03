@@ -1,1 +1,1 @@
-packages/svelte/test-helpers/compiledComponent.js
+**/node_modules/**/*
