@@ -45,7 +45,6 @@ jobs:
         directory: ./coverage/lcov-report/
 
   build_and_deploy_coverage:
-    needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
