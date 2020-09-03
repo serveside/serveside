@@ -26,7 +26,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "npx lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "babel-plugin-nodejs-import-images": "^1.0.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.3.0",
     "doctoc": "^1.4.0",
     "eslint": "^7.8.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -64,5 +66,10 @@
     "svelte": "^3.24.1",
     "vue": "^2.6.12",
     "vue-server-renderer": "^2.6.12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
