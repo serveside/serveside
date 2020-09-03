@@ -15,7 +15,7 @@
 
 ## What is this
 
-This is an express.js ssr as a service implementation for existiung sites that want to start to use a component library (with react or vue) along with ssr to embed on their sites
-
+This is an express.js ssr as a service implementation for existing sites that want to start to use a component
+ library (with react or vue) along with ssr to embed on their sites
 
 ## Installation

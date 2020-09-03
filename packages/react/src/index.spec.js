@@ -1,6 +1,6 @@
+import ReactDomServer from 'react-dom/server';
 import { htmlLoader, errorHtmlLoader } from './index';
 import Component from '../test-helpers/component';
-import ReactDomServer from 'react-dom/server';
 
 describe('render HTML', () => {
   it('should return rendered HTML of component', async () => {
@@ -29,7 +29,8 @@ describe('render HTML', () => {
                 window.__SERVESIDE_LOAD_PROPS__ ||= {};
                 window.__SERVESIDE_LOAD_PROPS__[3] = {};
                 </script>
-      `.trim());
+      `.trim(),
+    );
   });
   it('should set an error', async () => {
     const res = {

@@ -106,4 +106,7 @@ dist
 # Ignore yarn lock changes for now
 yarn.lock
 
+# ide files
+.idea
+
 examples

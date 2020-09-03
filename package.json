@@ -1,12 +1,15 @@
 {
-  "name": "@serveside/serveside",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "linfo": "lerna info",
+    "changelog": "lerna-changelog",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "release": "lerna version --conventional-commits --create-release github",
-    "test": "jest"
+    "test": "cross-env FORCE_COLOR=true jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serveside/serveside.git"
   },
   "engines": {
     "yarn": ">=1 <2",
@@ -17,7 +20,7 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "./README.md": [
+    "./**/*.md": [
       "doctoc --notitle"
     ]
   },
@@ -39,6 +42,7 @@
     "babel-jest": "^26.3.0",
     "babel-plugin-nodejs-import-images": "^1.0.0",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.2",
     "doctoc": "^1.4.0",
     "eslint": "^7.8.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -51,6 +55,7 @@
     "graphql": "^15.3.0",
     "husky": "^4.2.5",
     "jest": "^26.4.0",
+    "lerna-changelog": "^1.0.1",
     "lint-staged": "^10.2.11",
     "prettier": "^2.1.1",
     "react": "^16.13.1",

@@ -1,24 +1,28 @@
-const { execSync } = require('child_process');
+const install = require('install-packages');
+const chalk = require('chalk');
 
-/* eslint-disable no-unused-expressions */
-exports.command = 'create [service]';
+const logInfo = require('../utils/log/info');
+const logError = require('../utils/log/error');
+
+exports.command = ['create', '$0'];
 exports.desc = 'Create a new ssr service';
 exports.builder = {
   service: {
     default: 'react',
   },
 };
-exports.handler = ({ service }) => {
-  console.log(`Starting a new ${service} service`);
 
-  const command = `npm install @serveside/core @serveside/${service}`;
-
-  console.log('Running command', `"${command}"`);
+exports.handler = async ({ service }) => {
+  logInfo('Starting a new %s service', chalk.underline(service));
 
   try {
-    const output = execSync(command).toString().trim();
-    console.log('Installed dependencies', output);
-  } catch (error) {
-    console.log(error);
+    logInfo('Installing npm core services...');
+    await install({
+      packages: ['@serveside/core', `@serveside/${service}`],
+      installPeers: true,
+    });
+    logInfo('Finished installing npm core services...');
+  } catch (err) {
+    logError(err);
   }
 };

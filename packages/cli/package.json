@@ -1,11 +1,18 @@
 {
   "name": "@serveside/cli",
-  "version": "0.0.1-alpha.11",
-  "description": "> TODO: description",
+  "version": "0.1.0-alpha.0",
+  "description": "CLI for installing serveside core and services",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
-  "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serveside/serveside.git",
+    "directory": "packages/cli"
+  },
+  "bin": {
+    "serveside": "index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -17,10 +24,6 @@
     "cmds",
     "src"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/serveside/serveside.git"
-  },
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
     "start": "node ."
@@ -29,6 +32,9 @@
     "url": "https://github.com/serveside/serveside/issues"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
+    "find-up": "^5.0.0",
+    "install-packages": "^0.2.5",
     "yargs": "^15.4.1"
   }
 }

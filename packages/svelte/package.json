@@ -1,11 +1,16 @@
 {
   "name": "@serveside/svelte",
-  "version": "0.0.1-alpha.11",
+  "version": "0.1.0-alpha.0",
   "description": "> TODO: description",
   "author": "Moshe Uminer <47164590+mosheduminer@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/serveside/serveside.git",
+    "directory": "packages/svelte"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -17,10 +22,6 @@
     "dist",
     "src"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/serveside/serveside.git"
-  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
