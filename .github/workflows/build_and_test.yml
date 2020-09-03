@@ -23,7 +23,6 @@ jobs:
       with:
         node-version: '12.x'      
 
-    # Runs a set of commands using the runners shell
     - name: Install dependencies
       run: |
         npm ci 
@@ -42,3 +41,24 @@ jobs:
         file: ./coverage/clover.xml
         fail_ci_if_error: true
         directory: ./coverage/lcov-report/
+
+  coverage:
+    needs: [ build ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: '12.x'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx lerna bootstrap
+
+      - uses: paambaati/codeclimate-action@v2.2.4
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm test -- --coverage
