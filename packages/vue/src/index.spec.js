@@ -1,5 +1,5 @@
 import { htmlLoader, errorHtmlLoader } from './index';
-import Component from '../test-helpers/compiledComponent';
+import Component from '../test-helpers/component';
 
 describe('render HTML', () => {
   it('should return rendered HTML of component', async () => {
@@ -10,7 +10,7 @@ describe('render HTML', () => {
       {
         query: {},
         params: {
-          component: 'Component.svelte',
+          component: 'component',
         },
         id: 3,
         locals: {
@@ -23,11 +23,10 @@ describe('render HTML', () => {
       () => null,
     );
     expect(res.locals.html).toEqual(`
-          <style>h1.svelte-c33f9i{background-color:red}</style>
           <div
               data-serveside-component="component"
-              data-serveside-id="serveside_svelte_ssr_3"
-          ><h1 class="svelte-c33f9i">Hello world!</h1></div>
+              data-serveside-id="serveside_vue_ssr_3"
+          ><div data-server-rendered="true">This is a test component</div></div>
           <script>
               window.__SERVESIDE_LOAD_PROPS__ ||= {};
               window.__SERVESIDE_LOAD_PROPS__[3] = {};

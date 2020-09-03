@@ -1,23 +1,26 @@
 import Vue from 'vue';
-import VueSSR from 'vue-server-renderer';
+import { createRenderer } from 'vue-server-renderer';
 
-const renderer = VueSSR.createRenderer();
+const renderer = createRenderer();
 
 async function htmlLoader(req, res, next) {
   const { ResolvedComponent, componentProps, component } = req.locals;
 
   const vueComponent = new Vue({
+    components: {
+      ServeSideComponent: ResolvedComponent,
+    },
     data: componentProps,
-    template: ResolvedComponent,
+    template: '<ServeSideComponent></ServeSideComponent>',
   });
 
   try {
     const componentString = await renderer.renderToString(vueComponent);
 
     res.locals.html = `
-          <div 
-              data-serveside-component="${component}" 
-              data-serveside-id="se_embed_react_ssr_${req.id}"
+          <div
+              data-serveside-component="${component}"
+              data-serveside-id="serveside_vue_ssr_${req.id}"
           >${componentString}</div>
           <script>
               window.__SERVESIDE_LOAD_PROPS__ ||= {};
@@ -43,7 +46,7 @@ function errorHtmlLoader(req, res, next) {
   res.locals.html = `
         <div 
             data-serveside-component="${component}" 
-            data-serveside-id="se_embed_react_ssr_${req.id}"
+            data-serveside-id="serveside_vue_ssr_${req.id}"
         ></div>
         <script>              
             window.__SERVESIDE_LOAD_ERROR__ = ${JSON.stringify(error.message)};
