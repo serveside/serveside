@@ -1,7 +1,7 @@
 {
   "name": "@serveside/core",
   "version": "0.1.0-alpha.0",
-  "description": "> TODO: description",
+  "description": "serveside core and services",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
