@@ -1,7 +1,7 @@
 {
   "name": "@serveside/react",
   "version": "0.1.0-alpha.3",
-  "description": "> TODO: description",
+  "description": "serveside plugin for react",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
