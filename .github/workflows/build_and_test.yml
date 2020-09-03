@@ -39,14 +39,6 @@ jobs:
     - name: Test packages
       run: npm test
 
-    - name: Upload to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} 
-        file: ./coverage/clover.xml
-        fail_ci_if_error: true
-        directory: ./coverage/lcov-report/
-
   publish-coverage:
     needs: build
     runs-on: ubuntu-latest
@@ -65,11 +57,25 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
+      - run: |
+          npm ci
+          npx lerna bootstrap
+          npm run build
+          npm test
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/clover.xml
+          fail_ci_if_error: true
+          directory: ./coverage/lcov-report/
+
       - name: Deploy coverage branch
         run: |
           git checkout -b code-coverage
           git push --set-upstream origin code-coverage
-          git add --force coverage/lcov-report
+          git add --force ./coverage/lcov-report
           git commit -am"Update coverage for serveside"
           git push
         env:
