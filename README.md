@@ -18,3 +18,5 @@
 
 This is an express.js ssr as a service implementation for existing sites that want to start to use a component
  library (with react or vue) along with ssr to embed on their sites
+
+[![powered-by-vercel](./powered-by-vercel.svg)](https://vercel.com?utm_source=serveside&utm_campaign=oss)
