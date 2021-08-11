@@ -1,25 +1,30 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Change Log](#change-log)
-- [0.1.0-alpha.4 (2020-09-03)](#010-alpha4-2020-09-03)
-    - [Bug Fixes](#bug-fixes)
-    - [Features](#features)
-- [0.1.0-alpha.3 (2020-09-03)](#010-alpha3-2020-09-03)
-    - [Bug Fixes](#bug-fixes-1)
-- [0.1.0-alpha.1 (2020-09-03)](#010-alpha1-2020-09-03)
-    - [Bug Fixes](#bug-fixes-2)
-- [0.1.0-alpha.0 (2020-09-03)](#010-alpha0-2020-09-03)
-    - [Features](#features-1)
-  - [0.0.1-alpha.14 (2020-09-02)](#001-alpha14-2020-09-02)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.1.0-alpha.5](https://github.com/serveside/serveside/compare/v0.1.0-alpha.4...v0.1.0-alpha.5) (2021-08-11)
+
+
+### Bug Fixes
+
+* **cc:** remove eslint flag that cc doesnt like ([6827714](https://github.com/serveside/serveside/commit/68277146f05307e3d3784b4792c08b4352e7868f))
+* **cc:** update cc config to be valid ([5b09731](https://github.com/serveside/serveside/commit/5b097316ec6adebaeeeec578160d4171bd1e77b6))
+* update failed lint checks ([3ff2a7f](https://github.com/serveside/serveside/commit/3ff2a7f4b39c255f6cba61fa6675204c38b001e2))
+
+
+### Features
+
+* add a versionup for prerelease ([16ffe89](https://github.com/serveside/serveside/commit/16ffe8960e9cbf50eddfcd828be66142ef5a50e0))
+* add eslint and prettier as dev deps ([ea5d309](https://github.com/serveside/serveside/commit/ea5d309e0d4bafcf1e543490bf699a05f2a2fac6))
+* create new release workflow ([#186](https://github.com/serveside/serveside/issues/186)) ([b42235b](https://github.com/serveside/serveside/commit/b42235b8be055c48ebe01e05d0d82b5bc62fc76e))
+* update commit-version ([d4d5a23](https://github.com/serveside/serveside/commit/d4d5a2371c57a0b1446d3d1268e5cb7ba00fe6cc))
+* update packages and linters to latest ([ce93f31](https://github.com/serveside/serveside/commit/ce93f31d740106f62285acb9dd076066ae250390))
+* update to use code coverage ([83e99a0](https://github.com/serveside/serveside/commit/83e99a0978c0f05b1fdf00ac7bdc038c3261eccb))
+
+
+
+
 
 # [0.1.0-alpha.4](https://github.com/serveside/serveside/compare/v0.1.0-alpha.3...v0.1.0-alpha.4) (2020-09-03)
 
