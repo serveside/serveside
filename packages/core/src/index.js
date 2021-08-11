@@ -1,3 +1,7 @@
+/**
+ * @module @serveside/core
+ */
+
 import { Router } from 'express';
 
 import createRequestId from './createRequestId';
@@ -6,6 +10,14 @@ import loadPlugins from './loadPlugins';
 
 const loaderRouter = Router();
 
+/**
+ * @param root0
+ * @param root0.entriesLocation
+ * @param root0.plugins
+ * @param root0.htmlLoader
+ * @param root0.errorHtmlLoader
+ * @param root0.htmlRenderer
+ */
 function core({
   entriesLocation = __dirname,
   plugins = [],

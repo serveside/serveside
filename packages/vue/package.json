@@ -23,13 +23,21 @@
     "src"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "lint": "eslint -f codeframe \"**/*.js\" --fix"
   },
   "bugs": {
     "url": "https://github.com/serveside/serveside/issues"
   },
   "peerDependencies": {
-    "vue": "^2.6.12",
-    "vue-server-renderer": "^2.6.12"
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14"
+  },
+  "devDependencies": {
+    "@shared/eslint-config-vue": "^0.0.0",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
+    "lint-staged": "^11.1.2"
   }
 }

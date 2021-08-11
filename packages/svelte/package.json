@@ -23,12 +23,20 @@
     "src"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "lint": "eslint -f codeframe \"**/*.js\" --fix"
   },
   "bugs": {
     "url": "https://github.com/serveside/serveside/issues"
   },
   "peerDependencies": {
-    "svelte": "^3.24.1"
+    "svelte": "^3.42.1"
+  },
+  "devDependencies": {
+    "@shared/eslint-config-svelte": "^0.0.0",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
+    "lint-staged": "^11.1.2"
   }
 }

@@ -1,0 +1,66 @@
+{    
+    "recurseDepth": 10,
+    "source": {
+        "include": ["packages", "./README.md"],
+        "exclude": ["node_modules"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(node_modules|docs|dist|.config.|.spec.|test-helpers)"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "plugins": ["plugins/markdown"],
+    "opts": {
+        "encoding": "utf8",
+        "template": "node_modules/docdash",
+        "destination": "./docs/",
+        "recurse": true,
+        "verbose": true
+    },
+    "markdown": {
+        "parser": "gfm",
+        "hardwrap": true,
+        "idInHeadings": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "default": {
+            "outputSourceFiles": true,
+            "includeDate": false,
+            "useLongnameInNav": true
+        }
+    },
+    "docdash": {
+        "static": true,
+        "sort": true,
+        "disqus": "",
+		"openGraph": {
+			"title": "Serveside",
+			"type": "website",
+			"image": "https://naftali.lubin.dev/favicon-32x32.png?v=8a370ae67443a7fd96b71aff74147006",
+			"site_name": "Serveside",
+			"url": "https://api.serveside.dev/"
+		},
+		"meta": {
+			"title": "Serveside",
+			"description": "SSR As A Service",
+			"keyword": "ssr, react, vuew, svelte"
+		},
+        "search": true,
+        "collapse": true,
+        "typedefs": true,
+        "removeQuotes": "none",
+        "scripts": [],
+        "menu":{
+            "Github repo":{
+                "href":"https://github.com/serveside/serveside",
+                "target":"_blank",
+                "class":"menu-item",
+                "id":"repository"
+            }
+        }
+    }
+}

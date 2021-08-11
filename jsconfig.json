@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@serveside/*": ["packages/*/src"],
+            "@shared/eslint-config*": ["packages/eslint-config*"]
+        }
+    }
+}

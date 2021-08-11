@@ -1,0 +1,19 @@
+{
+  "name": "@shared/eslint-config-svelte",
+  "version": "0.0.0",
+  "license": "ISC",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@shared/eslint-config": "^0.0.0",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
+    "lint-staged": "^11.1.2"
+  },
+  "dependencies": {
+    "@shared/eslint-config": "^0.0.0"
+  }
+}

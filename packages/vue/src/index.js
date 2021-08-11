@@ -1,8 +1,17 @@
+/**
+ * @module @serveside/vue
+ */
+
 import Vue from 'vue';
 import { createRenderer } from 'vue-server-renderer';
 
 const renderer = createRenderer();
 
+/**
+ * @param req
+ * @param res
+ * @param next
+ */
 async function htmlLoader(req, res, next) {
   const { ResolvedComponent, componentProps, component } = req.locals;
 
@@ -40,6 +49,11 @@ async function htmlLoader(req, res, next) {
   }
 }
 
+/**
+ * @param req
+ * @param res
+ * @param next
+ */
 function errorHtmlLoader(req, res, next) {
   const { componentProps, component, error } = req.locals;
 
@@ -62,6 +76,10 @@ function errorHtmlLoader(req, res, next) {
   next();
 }
 
+/**
+ * @param __
+ * @param res
+ */
 function htmlRenderer(__, res) {
   res.send(res.locals.html);
 }

@@ -1,0 +1,6 @@
+{
+    "paths": {
+        "@serveside/*": ["../*/src"],
+        "@shared/eslint-config": ["../eslint-config"]
+    }
+}

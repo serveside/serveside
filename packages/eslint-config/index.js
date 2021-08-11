@@ -3,35 +3,26 @@ module.exports = {
     browser: false,
     node: true,
   },
+  ignorePatterns: ["node_modules/**/*", "dist/**/*"],
   extends: [
-    'plugin:react/recommended',
-    'plugin:vue/vue3-recommended',
     'airbnb',
+    'plugin:jsdoc/recommended'
   ],
-  parser: 'babel-eslint',
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    babelOptions: {
+      configFile: "../../babel.config.js",
+    },
   },
-  plugins: ['react', 'vue', 'svelte3'],
-
   rules: {
-    'react/jsx-props-no-spreading': 0,
     'import/no-extraneous-dependencies': 0,
   },
   overrides: [
-    {
-      files: ['**/*.svelte'],
-      processor: 'svelte3/svelte3',
-    },
     {
       files: ['**/*.spec.js', '**/*.spec.jsx'],
       env: {

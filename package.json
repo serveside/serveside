@@ -1,12 +1,17 @@
 {
   "private": true,
+  "name": "serveside",
+  "version": "0.1.0-alpha.1",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "changelog": "lerna-changelog",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
     "release": "lerna version --conventional-commits --create-release github",
+    "lint": "lerna run lint --parallel",
     "test": "cross-env FORCE_COLOR=true jest",
-    "commit": "cz"
+    "docs": "jsdoc -c ./jsdoc.json",
+    "commit": "cz",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -16,63 +21,48 @@
     "yarn": ">=1 <2",
     "node": ">=10"
   },
-  "lint-staged": {
-    "./**/*.{js,jsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "./**/*.md": [
-      "doctoc --notitle"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "dependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-transform-destructuring": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^11.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.3.0",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/eslint-parser": "^7.15.0",
+    "@babel/plugin-transform-destructuring": "^7.14.7",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@commitlint/config-lerna-scopes": "^13.1.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.0.6",
     "babel-plugin-nodejs-import-images": "^1.0.0",
-    "commitizen": "^4.2.1",
-    "core-js": "^3.6.5",
-    "cross-env": "^7.0.2",
+    "commitizen": "^4.2.4",
+    "core-js": "^3.16.1",
+    "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
-    "doctoc": "^1.4.0",
-    "eslint": "^7.8.1",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-vue": "^2.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.0",
-    "eslint-plugin-svelte3": "^2.7.3",
-    "eslint-plugin-vue": "^7.0.0-beta.3",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "eslint-plugin-vue": "^7.16.0",
     "express": "^4.17.1",
-    "graphql": "^15.3.0",
-    "husky": "^4.2.5",
-    "jest": "^26.4.0",
-    "lerna-changelog": "^1.0.1",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.1.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-is": "^16.13.1",
-    "svelte": "^3.24.1",
-    "vue": "^2.6.12",
-    "vue-server-renderer": "^2.6.12"
+    "graphql": "^15.5.1",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "jsdoc": "^3.6.7",
+    "lerna-changelog": "^2.1.0",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "svelte": "^3.42.1",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14"
   }
 }

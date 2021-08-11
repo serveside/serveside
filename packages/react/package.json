@@ -23,14 +23,22 @@
     "src"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "lint": "eslint -f codeframe \"**/*.js\" --fix"
   },
   "bugs": {
     "url": "https://github.com/serveside/serveside/issues"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-is": "^16.13.1"
+    "react": ">=16 <18",
+    "react-dom": ">=16 <18",
+    "react-is": ">=16 <18"
+  },
+  "devDependencies": {
+    "@shared/eslint-config-react": "^0.0.0",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
+    "lint-staged": "^11.1.2"
   }
 }

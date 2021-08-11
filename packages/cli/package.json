@@ -26,15 +26,23 @@
   ],
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
+    "lint": "eslint -f codeframe \"**/*.js\" --fix",
     "start": "node ."
   },
   "bugs": {
     "url": "https://github.com/serveside/serveside/issues"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.2",
     "find-up": "^5.0.0",
     "install-packages": "^0.2.5",
-    "yargs": "^15.4.1"
+    "yargs": "^17.1.0"
+  },
+  "devDependencies": {
+    "@shared/eslint-config": "^0.0.0",
+    "docdash": "^1.2.0",
+    "eslint": "^7.32.0",
+    "jsdoc": "^3.6.7",
+    "lint-staged": "^11.1.2"
   }
 }
