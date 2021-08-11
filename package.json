@@ -5,7 +5,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
     "changelog": "lerna-changelog",
-    "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
+    "build": "lerna run build --parallel",
     "lint": "lerna run lint --parallel",
     "test": "cross-env FORCE_COLOR=true jest",
     "docs": "jsdoc -c ./jsdoc.json",
@@ -21,7 +21,7 @@
     "postversionup:patch": "npm run commit-version",
     "postversionup:minor": "npm run commit-version",
     "postversionup:major": "npm run commit-version",
-    "commit-version": "HUSKY=0 git add . && git commit --no-verify -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
+    "commit-version": "HUSKY=0 @serveside/cligit add . && git commit --no-verify -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "release": "lerna publish from-package"
   },
   "repository": {

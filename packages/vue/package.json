@@ -24,7 +24,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "lint": "eslint -f codeframe \"**/*.js\" --fix"
+    "lint": "eslint -f codeframe \"**/*.js\" --fix",
+    "build": "babel --root-mode upward src -d dist --delete-dir-on-start"
   },
   "bugs": {
     "url": "https://github.com/serveside/serveside/issues"

@@ -7,6 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "build": "exit 0"
+  },
   "devDependencies": {
     "@shared/eslint-config": "^0.0.0",
     "docdash": "^1.2.0",

@@ -7,6 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "build": "exit 0"
+  },
   "devDependencies": {
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
