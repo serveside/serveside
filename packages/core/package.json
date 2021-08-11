@@ -1,6 +1,6 @@
 {
   "name": "@serveside/core",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "description": "serveside core and services",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
@@ -36,7 +36,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@shared/eslint-config": "^0.1.0-alpha.5",
+    "@shared/eslint-config": "^0.1.0-alpha.6",
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
