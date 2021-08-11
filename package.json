@@ -6,12 +6,21 @@
     "bootstrap": "lerna bootstrap --hoist",
     "changelog": "lerna-changelog",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d dist --delete-dir-on-start",
-    "release": "lerna version --conventional-commits --create-release github",
     "lint": "lerna run lint --parallel",
     "test": "cross-env FORCE_COLOR=true jest",
     "docs": "jsdoc -c ./jsdoc.json",
     "commit": "cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "versionup": "lerna version --conventional-commits --no-git-tag-version",
+    "versionup:patch": "lerna version patch --conventional-commits --no-git-tag-version",
+    "versionup:minor": "lerna version minor --conventional-commits --no-git-tag-version",
+    "versionup:major": "lerna version major --conventional-commits --no-git-tag-version",
+    "postversionup": "npm run commit-version",
+    "postversionup:patch": "npm run commit-version",
+    "postversionup:minor": "npm run commit-version",
+    "postversionup:major": "npm run commit-version",
+    "commit-version": "git add . && git commit -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
+    "release": "lerna publish from-package"
   },
   "repository": {
     "type": "git",
