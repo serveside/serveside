@@ -81,6 +81,7 @@ jobs:
           npm run release -- --yes --git-tag-version
 
       - uses: actions/github-script@v4
+        if: github.event_name == 'pull_request'
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
