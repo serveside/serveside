@@ -47,10 +47,10 @@ jobs:
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Versionup commit
         run: |
-          npm run versionup -- --yes --sign-git-commit --sign-git-tag --create-release github
+          npm run version -- --conventional-commits --yes --sign-git-commit --sign-git-tag --create-release github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
