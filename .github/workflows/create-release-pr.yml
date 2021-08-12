@@ -39,8 +39,6 @@ jobs:
 
       - name: Install
         run: npm install
-      - name: Install
-        run: npm install
         
       - name: Git Identity
         run: |
