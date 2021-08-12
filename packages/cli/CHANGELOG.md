@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0-alpha.8 (2021-08-12)
+
+**Note:** Version bump only for package @serveside/cli
+
+
+
+
+
 # [0.1.0-alpha.7](https://github.com/serveside/serveside/compare/v0.1.0-alpha.4...v0.1.0-alpha.7) (2021-08-11)
 
 

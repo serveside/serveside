@@ -1,6 +1,6 @@
 {
   "name": "@serveside/react",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "description": "serveside plugin for react",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
@@ -36,7 +36,7 @@
     "react-is": ">=16 <18"
   },
   "devDependencies": {
-    "@shared/eslint-config-react": "^0.1.0-alpha.7",
+    "@shared/eslint-config-react": "^0.1.0-alpha.8",
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
