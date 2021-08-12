@@ -50,7 +50,7 @@ jobs:
 
       - name: Versionup commit
         run: |
-          npm run version -- --conventional-commits --yes --sign-git-commit --sign-git-tag --create-release github
+          npm run version:ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
