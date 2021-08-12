@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0-alpha.8 (2021-08-12)
+
+
+### Bug Fixes
+
+* run build and bootstrap before versioning ([1298e7a](https://github.com/maniator/serveside/commit/1298e7a8b68d4a35d74c9f5669af1fd4aeb64813))
+
+
+
+
+
 # [0.1.0-alpha.7](https://github.com/serveside/serveside/compare/v0.1.0-alpha.4...v0.1.0-alpha.7) (2021-08-11)
 
 
