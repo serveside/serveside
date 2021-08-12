@@ -47,10 +47,12 @@ jobs:
         run: |
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
-          git checkout -b '${{ github.sha }}'
-          git push -u '${{ github.sha }}'
+          git checkout -b release/next
+          git push -uf release/next
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Versionup commit
         run: |
