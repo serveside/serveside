@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@shared/eslint-config-react",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "license": "ISC",
   "main": "index.js",
   "publishConfig": {
@@ -17,6 +17,6 @@
     "lint-staged": "^11.1.2"
   },
   "dependencies": {
-    "@shared/eslint-config": "^0.1.0-alpha.8"
+    "@shared/eslint-config": "^0.1.0-alpha.9"
   }
 }
