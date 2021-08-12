@@ -17,12 +17,10 @@
     "access": "public"
   },
   "directories": {
-    "cmds": "cmds",
-    "utils": "utils"
+    "cmds": "dist"
   },
   "files": [
-    "cmds",
-    "utils"
+    "dist"
   ],
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
