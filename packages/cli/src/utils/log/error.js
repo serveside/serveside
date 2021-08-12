@@ -1,9 +1,9 @@
-const chalk = require('chalk');
+import { black, bgRed } from 'chalk';
 
 const { log } = console;
 
-const error = chalk.black;
-const errorBg = chalk.bgRed;
+const error = black;
+const errorBg = bgRed;
 const logError = (message, repl = null) => {
   if (repl) {
     log(errorBg(error(message)), repl);
@@ -12,4 +12,4 @@ const logError = (message, repl = null) => {
   }
 };
 
-module.exports = logError;
+export default logError;
