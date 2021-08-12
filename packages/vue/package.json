@@ -1,6 +1,6 @@
 {
   "name": "@serveside/vue",
-  "version": "0.1.0-alpha.9",
+  "version": "0.1.0-alpha.10",
   "description": "serveside plugin for vue",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
@@ -35,7 +35,7 @@
     "vue-server-renderer": "^2.6.14"
   },
   "devDependencies": {
-    "@shared/eslint-config-vue": "^0.1.0-alpha.9",
+    "@shared/eslint-config-vue": "^0.1.0-alpha.10",
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",

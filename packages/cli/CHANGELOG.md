@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.10](https://github.com/maniator/serveside/compare/v0.1.0-alpha.8...v0.1.0-alpha.10) (2021-08-12)
+
+
+### Features
+
+* package update for cli ([1335a2c](https://github.com/maniator/serveside/commit/1335a2c38dd717c286769fd536a80b65bf29946a))
+* remove directories list from cli ([f586822](https://github.com/maniator/serveside/commit/f5868221dcbab99904b1253b6ae1e39f74e68a26))
+* update cli release assets ([14a5e80](https://github.com/maniator/serveside/commit/14a5e800d6d1ec0be11529969f959d3d878f2e80))
+
+
+
+
+
 # 0.1.0-alpha.9 (2021-08-12)
 
 
