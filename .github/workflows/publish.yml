@@ -47,6 +47,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Git Identity
         run: |
