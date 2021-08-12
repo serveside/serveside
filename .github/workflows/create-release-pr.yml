@@ -59,7 +59,7 @@ jobs:
           body: |
             ## v${{ steps.changelog.outputs.version }}
           labels: "Type: Release"
-          branch: "release/next"
+          branch: "release/${{ steps.changelog.outputs.version }}"
           request-to-parent: false
       - name: Check outputs
         run: |
