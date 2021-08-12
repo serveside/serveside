@@ -10,6 +10,7 @@
     "url": "https://github.com/maniator/serveside.git",
     "directory": "packages/cli"
   },
+  "main": "dist/index.js",
   "bin": {
     "serveside": "dist/index.js"
   },
@@ -17,7 +18,8 @@
     "access": "public"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "test": "echo \"error: run tests from root\" && exit 1",
