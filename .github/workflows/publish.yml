@@ -29,10 +29,6 @@ jobs:
         github.event_name == 'pull_request' && 
           github.event.pull_request.merged == 'true'
       )
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -70,20 +66,20 @@ jobs:
             echo "::set-output name=exists_tag::false"
           fi
 
+      - name: Authenticate with Registry
+        run: |
+          npm logout
+          echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish
         if: steps.tag_check.outputs.exists_tag == 'false'
         run: |
-          npm run release -- --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Create Release
-        id: create_release
-        if: steps.tag_check.outputs.exists_tag == 'false'
-        run: |
-          gh release create -n "${{ github.event.pull_request.body }}" \
-            -t "${{ github.event.pull_request.title }}" \
-            "v${{ env.CURRENT_VERSION }}"
+          npm run release -- --yes --git-tag-version
 
       - uses: actions/github-script@v4
         with:

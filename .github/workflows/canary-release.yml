@@ -13,10 +13,6 @@ jobs:
   canary-release:
     name: canary-release
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     if: |
       (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
       startsWith(github.event.comment.body, '/canary-release')
@@ -68,6 +64,16 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
       - name: Install
         run: npm ci
+
+      - name: Authenticate with Registry
+        run: |
+          npm logout
+          echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish
         run: npm run release:canary -- --yes
