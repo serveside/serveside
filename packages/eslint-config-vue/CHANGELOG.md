@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0-alpha.9 (2021-08-12)
+
+
+### Features
+
+* remove directories list from cli ([f586822](https://github.com/maniator/serveside/commit/f5868221dcbab99904b1253b6ae1e39f74e68a26))
+
+
+
+
+
 # 0.1.0-alpha.8 (2021-08-12)
 
 **Note:** Version bump only for package @shared/eslint-config-vue
