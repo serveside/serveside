@@ -30,18 +30,32 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
           token: ${{ secrets.NPM_TOKEN }}
+      - name: Authenticate with Registry
+        run: |
+          echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Install
         run: npm ci
-        
       - name: Git Identity
         run: |
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Versionup commit
         run: |
           npm run versionup -- --yes --sign-git-commit --sign-git-tag --create-release github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Set current CHANGELOG to output
         id: changelog
         shell: bash -ex {0}
