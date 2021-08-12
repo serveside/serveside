@@ -39,6 +39,9 @@ jobs:
 
       - name: Install
         run: npm install
+      - name: Install
+        run: npm install
+        
       - name: Git Identity
         run: |
           git config --global user.name '${GITHUB_ACTOR}'
@@ -66,18 +69,6 @@ jobs:
           title: 'v${{ steps.changelog.outputs.version }}'
           body: |
             ## v${{ steps.changelog.outputs.version }}
-
-            ### Breaking Changes
-
-            - [ ] TODO
-
-            ### Features
-
-            - [ ] TODO
-
-            ### Bug Fixes
-
-            - [ ] TODO
           labels: "Type: Release"
           branch: "release/next"
           request-to-parent: false
