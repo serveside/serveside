@@ -35,6 +35,16 @@ jobs:
             } catch (err) {
               core.setFailed(`Request failed with error ${err}`)
             }
+      - uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🎉 Canary Release build started'
+            })
       - name: checkout
         uses: actions/checkout@v2
         with:
@@ -46,13 +56,28 @@ jobs:
         with:
           node-version: 14.x
           registry-url: 'https://npm.pkg.github.com'
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: install
-        run: yarn
+        run: npm install
       - name: Publish
-        run: yarn run release:canary
+        run: npm run release:canary -- --yes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - uses: actions/github-script@v4
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -61,5 +86,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🎉 Canary Release. You can install canary version via `npm install package@next`'
+              body: '🎉 Canary Release complete! You can install canary version via `npm install package@next`'
             })

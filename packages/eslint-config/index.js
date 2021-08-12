@@ -3,7 +3,12 @@ module.exports = {
     browser: false,
     node: true,
   },
-  ignorePatterns: ["node_modules/**/*", "dist/**/*"],
+  ignorePatterns: [
+    "node_modules/**/*",
+    "dist/**/*",
+    "docs/**/*",
+    "coverage/**/*",
+  ],
   extends: [
     'airbnb',
     'plugin:jsdoc/recommended'

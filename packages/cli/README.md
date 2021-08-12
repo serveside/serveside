@@ -4,9 +4,10 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Help](#help)
+- [ServeSide CLI](#serveside-cli)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Help](#help)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
