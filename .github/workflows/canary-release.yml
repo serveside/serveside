@@ -63,7 +63,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
       - name: Install
-        run: npm install
+        run: npm ci
 
       - name: Publish
         run: npm run release:canary -- --yes
@@ -79,5 +79,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🎉 Canary Release complete! You can install canary version via `npm install package@next`'
+              body: '🎉 Canary Release complete! You can install canary version via `npm ci package@next`'
             })
