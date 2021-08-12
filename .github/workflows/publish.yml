@@ -68,7 +68,6 @@ jobs:
 
       - name: Authenticate with Registry
         run: |
-          npm logout
           echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
