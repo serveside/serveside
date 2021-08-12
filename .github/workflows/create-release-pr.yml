@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Versionup commit
         run: |
-          npm run versionup -- --yes
+          npm run versionup -- --yes --sign-git-commit --sign-git-tag --create-release github
       - name: Set current CHANGELOG to output
         id: changelog
         shell: bash -ex {0}
