@@ -51,10 +51,14 @@ jobs:
           ref: ${{ fromJSON(steps.pr.outputs.result).head.ref }}
           repository: ${{ fromJSON(steps.pr.outputs.result).head.repo.full_name }}
           fetch-depth: 0
-      - name: setup Node
+      
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Setup Node ${{ steps.nvm.outputs.NVMRC }}
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version:  ${{ steps.nvm.outputs.NVMRC }}
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Cache node modules
