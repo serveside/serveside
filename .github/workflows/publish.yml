@@ -5,6 +5,8 @@ on:
     branches:
       - main
     types: [closed]
+  issue_comment:
+    types: [ created ]
 
 permissions:
   contents: write # for checkout and tag
@@ -15,6 +17,18 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+    if: |
+      (
+        github.event_name == 'issue_comment' &&
+        (github.event.comment.author_association == 'MEMBER' || 
+          github.event.comment.author_association == 'OWNER' || 
+          github.event.comment.author_association == 'CONTRIBUTOR') &&
+        startsWith(github.event.comment.body, '/publish-release')
+      ) || 
+      (
+        github.event_name == 'pull_request' && 
+          github.event.pull_request.merged == 'true'
+      )
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
