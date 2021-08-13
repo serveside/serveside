@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "serveside",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0",
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "changelog": "lerna-changelog",
@@ -13,7 +13,7 @@
     "prepare": "husky install",
     "version": "lerna version --conventional-commits",
     "preversion:ci": "npm run bootstrap",
-    "version:ci": "npm run version -- --yes --create-release github",
+    "version:ci": "npm run version -- --yes --no-commit-hooks --create-release github",
     "versionup": "npm run version -- --no-git-tag-version",
     "versionup:prerelease": "npm run versionup -- prerelease --no-git-tag-version",
     "versionup:patch": "npm run versionup -- patch --no-git-tag-version",
@@ -24,7 +24,8 @@
     "predeploy": "npm run build",
     "deploy": "lerna publish",
     "release": "npm run deploy -- from-package",
-    "release:canary": "npm run deploy -- --canary"
+    "release:canary": "npm run deploy -- --canary --force-publish",
+    "release:canary:ci": "npm run release:canary -- --yes"
   },
   "repository": {
     "type": "git",
