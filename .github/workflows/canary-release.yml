@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: checkout
         run: |
-          git init
+          gh repo clone ${{ github.repository }} . -- --depth 1
           gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
@@ -73,7 +73,7 @@ jobs:
     steps:
       - name: checkout
         run: |
-          git init
+          gh repo clone ${{ github.repository }} . -- --depth 1
           gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
