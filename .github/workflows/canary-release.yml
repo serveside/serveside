@@ -32,7 +32,9 @@ jobs:
       startsWith(github.event.comment.body, '/canary-release')
     steps:
       - name: checkout
-        run: gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
+        run: |
+          git init
+          gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
@@ -70,7 +72,9 @@ jobs:
       startsWith(github.event.comment.body, '/canary-release')
     steps:
       - name: checkout
-        run: gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
+        run: |
+          git init
+          gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
