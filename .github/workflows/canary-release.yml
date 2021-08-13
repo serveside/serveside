@@ -76,6 +76,7 @@ jobs:
       - name: Authenticate with NPM Registry
         run: |
           echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
         env:
@@ -134,7 +135,7 @@ jobs:
 
       - name: Authenticate with GH Registry
         run: |
-          echo "@maniator:registry=https://npm.pkg.github.com/" > .npmrc
+          echo "@serveside:registry=https://npm.pkg.github.com/" > .npmrc
           echo "registry=https://npm.pkg.github.com/" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
@@ -146,7 +147,8 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  test:
+  deploy-complete:
+    name: Publishing Complete
     needs: 
       - canary-gh
       - canary-npm
