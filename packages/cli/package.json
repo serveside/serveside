@@ -3,11 +3,11 @@
   "version": "0.1.0-alpha.10",
   "description": "CLI for installing serveside core and services",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
-  "homepage": "https://github.com/maniator/serveside#readme",
+  "homepage": "https://github.com/serveside/serveside#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/maniator/serveside.git",
+    "url": "https://github.com/serveside/serveside.git",
     "directory": "packages/cli"
   },
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
     "build": "babel --root-mode upward src -d dist --delete-dir-on-start"
   },
   "bugs": {
-    "url": "https://github.com/maniator/serveside/issues"
+    "url": "https://github.com/serveside/serveside/issues"
   },
   "dependencies": {
     "chalk": "^4.1.2",
