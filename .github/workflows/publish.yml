@@ -51,7 +51,7 @@ jobs:
 
       - name: Install
         run: npm ci
-      # Define ${CURRENT_VERSION}
+
       - name: Set Current Version
         run: |
           CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
@@ -85,14 +85,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/github-script@v4
-        if: github.event_name == 'pull_request'
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }} is released 🎉'
-            })
+      - name: complete on PR
+        if: github.event.issue.pull_request
+        run: |
+          gh pr comment -b "https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}\
+           is released 🎉" ${{github.event.issue.number}}
+      - name: complete on issue
+        if: ! github.event.issue.pull_request
+        run: |
+          gh issue comment -b "https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}\
+           is released 🎉" ${{github.event.issue.number}}

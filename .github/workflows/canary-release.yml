@@ -17,16 +17,9 @@ jobs:
       (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
       startsWith(github.event.comment.body, '/canary-release')
     steps:
-      - uses: actions/github-script@v4
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🎉 Canary Release build started'
-            })
+      - name: complete
+        run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.issue.number}}
+        
   canary-npm:
     name: Publish Canary to NPM
     runs-on: ubuntu-latest
@@ -35,24 +28,6 @@ jobs:
       (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
       startsWith(github.event.comment.body, '/canary-release')
     steps:
-      - name: get pr information
-        uses: actions/github-script@v4
-        id: pr
-        with:
-          script: |
-            const request = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            }
-            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
-            try {
-              const result = await github.pulls.get(request)
-              core.info(`Got PR: ${JSON.stringify(result.data)}`)
-              return result.data
-            } catch (err) {
-              core.setFailed(`Request failed with error ${err}`)
-            }
       - name: checkout
         uses: actions/checkout@v2
         with:
@@ -87,33 +62,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Set Current Version
-        run: |
-          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
-          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
-      - uses: actions/github-script@v4
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "🎉 Canary Release complete! You can install canary version via \
-                `npm install @serveside/<package>@${{ env.CURRENT_VERSION }}`"
-            })
-      - uses: actions/github-script@v4
-        if: ${{ failure() || cancelled() }}
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "Some error happened on publish. Please check the action logs"
-            })
-
   canary-gh:
     name: Publish Canary to GH
     runs-on: ubuntu-latest
@@ -122,24 +70,6 @@ jobs:
       (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
       startsWith(github.event.comment.body, '/canary-release')
     steps:
-      - name: get pr information
-        uses: actions/github-script@v4
-        id: pr
-        with:
-          script: |
-            const request = {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            }
-            core.info(`Getting PR #${request.pull_number} from ${request.owner}/${request.repo}`)
-            try {
-              const result = await github.pulls.get(request)
-              core.info(`Got PR: ${JSON.stringify(result.data)}`)
-              return result.data
-            } catch (err) {
-              core.setFailed(`Request failed with error ${err}`)
-            }
       - name: checkout
         uses: actions/checkout@v2
         with:
@@ -174,29 +104,15 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set Current Version
-        run: |
-          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
-          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
-      - uses: actions/github-script@v4
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "🎉 Canary Release complete! You can install canary version via \
-                `npm install @serveside/<package>@${{ env.CURRENT_VERSION }}`"
-            })
-      - uses: actions/github-script@v4
+  deploy-complete:
+    name: Publishing Complete
+    needs: 
+      - canary-gh
+      - canary-npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: complete
+        run: gh pr comment -b "🎉 Canary Release complete!" ${{github.event.issue.number}}
+      - name: failure
         if: ${{ failure() || cancelled() }}
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: "Some error happened on publish. Please check the action logs"
-            })
+        run: gh pr comment -b "Some error happened on publish. Please check the action logs" ${{github.event.issue.number}}
