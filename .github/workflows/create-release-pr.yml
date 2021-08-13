@@ -81,8 +81,3 @@ jobs:
         run: |
           gh pr create --title 'v${{ steps.changelog.outputs.version }}'\
             -l "Type: Release" --base main 
-
-      - name: Check outputs
-        run: |
-          echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pr_number }}"
