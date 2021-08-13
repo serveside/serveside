@@ -4,3 +4,4 @@
 lerna run precommit --concurrency 2 --stream
 # TODO: fix lint issues
 lerna run lint || true
+npm run docs
