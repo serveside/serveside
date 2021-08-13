@@ -21,7 +21,7 @@ jobs:
       startsWith(github.event.comment.body, '/canary-release')
     steps:
       - name: complete
-        run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.issue.number}}
+        run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.issue.number}} -R ${{ github.repository }}
         
   canary-npm:
     name: Publish Canary to NPM
@@ -115,7 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: complete
-        run: gh pr comment -b "🎉 Canary Release complete!" ${{github.event.issue.number}}
+        run: gh pr comment -b "🎉 Canary Release complete!" ${{github.event.issue.number}} -R ${{ github.repository }}
       - name: failure
         if: ${{ failure() || cancelled() }}
-        run: gh pr comment -b "Some error happened on publish. Please check the action logs" ${{github.event.issue.number}}
+        run: gh pr comment -b "Some error happened on publish. Please check the action logs" ${{github.event.issue.number}} -R ${{ github.repository }}
