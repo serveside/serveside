@@ -1,7 +1,11 @@
 name: Create Release
+
 on:
   issue_comment:
     types: [ created ]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 # require public member
 # private member is treated as CONTRIBUTOR

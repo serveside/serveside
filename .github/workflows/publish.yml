@@ -1,4 +1,5 @@
 name: publish
+
 on:
   # When Release Pull Request is merged
   pull_request:
@@ -7,6 +8,9 @@ on:
     types: [ closed ]
   issue_comment:
     types: [ created ]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 permissions:
   contents: write # for checkout and tag
