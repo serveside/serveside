@@ -78,17 +78,17 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to GH
         run: npm run release -- --yes
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - uses: actions/github-script@v4
         if: github.event_name == 'pull_request'
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.GH_TOKEN}}
           script: |
             github.issues.createComment({
               issue_number: context.issue.number,
