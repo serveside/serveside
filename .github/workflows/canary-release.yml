@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/github-script@v4
         with:
-          github-token: ${{secrets.GH_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.createComment({
               issue_number: context.issue.number,
@@ -87,6 +87,33 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Set Current Version
+        run: |
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
+      - uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🎉 Canary Release complete! You can install canary version via \
+                `npm install @serveside/<package>@${{ env.CURRENT_VERSION }}`"
+            })
+      - uses: actions/github-script@v4
+        if: ${{ failure() || cancelled() }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Some error happened on publish. Please check the action logs"
+            })
+
   canary-gh:
     name: Publish Canary to GH
     runs-on: ubuntu-latest
@@ -140,28 +167,36 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
         env:
-          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GH
         run: npm run release:canary:ci
         env:
-          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy-complete:
-    name: Publishing Complete
-    needs: 
-      - canary-gh
-      - canary-npm
-    runs-on: ubuntu-latest
-    steps:
+      - name: Set Current Version
+        run: |
+          CURRENT_VERSION=$(node -p 'require("./lerna.json").version')
+          echo "CURRENT_VERSION=${CURRENT_VERSION}" >> $GITHUB_ENV
       - uses: actions/github-script@v4
         with:
-          github-token: ${{secrets.GH_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: "🎉 Canary Release complete! You can install canary version via \
-                `npm install @serveside/*@$(node -p 'require("./lerna.json").version')`"
+                `npm install @serveside/<package>@${{ env.CURRENT_VERSION }}`"
+            })
+      - uses: actions/github-script@v4
+        if: ${{ failure() || cancelled() }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Some error happened on publish. Please check the action logs"
             })
