@@ -1,6 +1,6 @@
 {
   "name": "@serveside/svelte",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "description": "serveside plugin for svelte",
   "author": "Moshe Uminer <47164590+mosheduminer@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
@@ -30,7 +30,7 @@
     "svelte": "^3.42.1"
   },
   "devDependencies": {
-    "@shared/eslint-config-svelte": "^0.1.0-alpha.10",
+    "@shared/eslint-config-svelte": "^0.1.0-alpha.11",
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
