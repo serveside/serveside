@@ -1,5 +1,6 @@
 import install from 'install-packages';
 import { underline } from 'chalk';
+import { version } from '../../package.json';
 
 import logInfo from '../utils/log/info';
 import logError from '../utils/log/error';
@@ -21,7 +22,7 @@ export async function handler({ service }) {
   try {
     logInfo('Installing npm core services...');
     await install({
-      packages: ['@serveside/core', `@serveside/${service}`],
+      packages: [`@serveside/core@^${version}`, `@serveside/${service}@^${version}`],
       installPeers: true,
     });
     logInfo('Finished installing npm core services...');
