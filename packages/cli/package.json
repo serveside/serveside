@@ -1,6 +1,6 @@
 {
   "name": "@serveside/cli",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "description": "CLI for installing serveside core and services",
   "author": "Naftali Lubin <maniator@users.noreply.github.com>",
   "homepage": "https://github.com/serveside/serveside#readme",
@@ -37,7 +37,7 @@
     "yargs": "^17.1.0"
   },
   "devDependencies": {
-    "@shared/eslint-config": "^0.1.0-alpha.10",
+    "@shared/eslint-config": "^0.1.0-alpha.11",
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
