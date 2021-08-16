@@ -13,14 +13,9 @@ permissions:
   packages: write # for publish
 
 jobs:
-  show_actor:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo '${{ github.actor }}'
-
   create_release_pr:
     name: Create Release Pull Request and tags
-    if: startsWith(github.event.inputs.type, 'create-release') && github.actor == 'maniator'
+    if: github.actor == 'maniator'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
