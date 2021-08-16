@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/serveside/serveside/compare/v0.1.0-alpha.8...v0.1.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* fix up release check ([91d4dc6](https://github.com/serveside/serveside/commit/91d4dc69e84bc4ee9074e745d423605e89ce8076))
+* fix workflow file issue ([9c5ca00](https://github.com/serveside/serveside/commit/9c5ca00ede462d4e1327e788192879ea42ff53bc))
+* only add comments if PR canary ([7b14a7f](https://github.com/serveside/serveside/commit/7b14a7fb6c4b3b6d3e45c2a8ce0a2e904b539fe2))
+* remove extra equals sign ([340d169](https://github.com/serveside/serveside/commit/340d1698a62ab9cca54531ff1d01c23b6d088684))
+* update broken action workflow ([660e6ca](https://github.com/serveside/serveside/commit/660e6ca14b31719e1e4f2e61ab148180baa8f4b6))
+* update ci dependencies ([d818352](https://github.com/serveside/serveside/commit/d818352306e8af1616f9a5594eed3e667b1e89c6))
+* update ci PR creation head ([6c081b2](https://github.com/serveside/serveside/commit/6c081b2c2ac91dfcfbf02cd64f1741c570f7b037))
+* update cli to work better ([a65e025](https://github.com/serveside/serveside/commit/a65e025f6e65c77ffebd6c9c75e6fd3d1470a64f))
+* update head branch for creating release PR ([2565c1f](https://github.com/serveside/serveside/commit/2565c1fb4b825c6c875ae725577fcaa18766b077))
+* update package json for npm ([161cb60](https://github.com/serveside/serveside/commit/161cb60c05abb8176806cb593418630030bdf036))
+* update PR creation steps ([e31a4b0](https://github.com/serveside/serveside/commit/e31a4b0e3b397512444dfc226ad511a89e04aa11))
+* update repo for canary comments ([84eea12](https://github.com/serveside/serveside/commit/84eea124bf5357a074c9c925cfca9399684357fa))
+* update repository location ([1378505](https://github.com/serveside/serveside/commit/1378505159e596bcb1181842bcc0daf2a783639a))
+* update to clone shallow instead of init ([550c4a5](https://github.com/serveside/serveside/commit/550c4a5eb213086fececd3436ccfc247e6aa83c1))
+* update workflow ([#195](https://github.com/serveside/serveside/issues/195)) ([0adb84a](https://github.com/serveside/serveside/commit/0adb84a37098b76ef6320af725f41a03c476206c))
+* updates ([847ca38](https://github.com/serveside/serveside/commit/847ca382e778c6848e429e1fb9b8fd04e00ee9ba))
+
+
+### Features
+
+* add node token to setup on ci ([1708291](https://github.com/serveside/serveside/commit/17082914163ef9ffd1608a4fbcc7ff060c44ec2b))
+* assign github actor to the new release PR ([ab56dfa](https://github.com/serveside/serveside/commit/ab56dfa31452324fae17db98b12a247e820a4975))
+* checkout pr with the cli ([1831f9f](https://github.com/serveside/serveside/commit/1831f9f6bc4c6918bd3ab65655f13b679253feb9))
+* commit api docs to the repository ([398d851](https://github.com/serveside/serveside/commit/398d8519c1d807bcd8e0cb7eff6a2b21b52a314e))
+* git init before PR checkout ([93509eb](https://github.com/serveside/serveside/commit/93509eb741f857691c727004e7cb436c5a038b41))
+* only post comment if release is from pr ([7881a85](https://github.com/serveside/serveside/commit/7881a8511133bd71a2cce29be828ab1c985f54a7))
+* package update for cli ([1335a2c](https://github.com/serveside/serveside/commit/1335a2c38dd717c286769fd536a80b65bf29946a))
+* remove directories list from cli ([f586822](https://github.com/serveside/serveside/commit/f5868221dcbab99904b1253b6ae1e39f74e68a26))
+* set action token environment variables ([7adc3af](https://github.com/serveside/serveside/commit/7adc3afa14d8deece377e1cc7d20f1e852ca03c3))
+* update cli release assets ([14a5e80](https://github.com/serveside/serveside/commit/14a5e800d6d1ec0be11529969f959d3d878f2e80))
+* update to utilize an npmrc file for auth ([1a284bf](https://github.com/serveside/serveside/commit/1a284bf622ed44ef8fc1dca062bc2b9a3b797219))
+
+
+
+
+
 # 0.1.0-alpha.11 (2021-08-16)
 
 

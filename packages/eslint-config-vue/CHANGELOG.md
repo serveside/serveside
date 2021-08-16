@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/maniator/serveside/compare/v0.1.0-alpha.8...v0.1.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* update cli to work better ([a65e025](https://github.com/maniator/serveside/commit/a65e025f6e65c77ffebd6c9c75e6fd3d1470a64f))
+* update repository location ([1378505](https://github.com/maniator/serveside/commit/1378505159e596bcb1181842bcc0daf2a783639a))
+
+
+
+
+
 # 0.1.0-alpha.11 (2021-08-16)
 
 

@@ -4,13 +4,12 @@ import { underline } from 'chalk';
 import logInfo from '../utils/log/info';
 import logError from '../utils/log/error';
 
-export const command = ['create', '$0'];
+export const command = 'create [service]';
 export const desc = 'Create a new ssr service';
-export const builder = {
-  service: {
-    default: 'react',
-  },
-};
+
+// command: 'configure <key> [value]',
+export const aliases = ['bootstrap'];
+export const builder = (yargs) => yargs.default('service', 'react');
 
 /**
  * @param root0
