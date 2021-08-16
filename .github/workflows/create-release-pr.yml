@@ -67,7 +67,6 @@ jobs:
         id: cpr
         shell: bash -ex {0}
         run: |
-          version=$(node -p 'require("./lerna.json").version')
-          gh pr create --title 'v${version}'\
-            -l "Type: Release" --base main \
-            -H release/next
+          gh pr create \
+            --label "Type: Release" --base main \
+            -head release/next --draft --fill
