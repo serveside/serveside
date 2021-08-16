@@ -69,4 +69,5 @@ jobs:
         run: |
           version=$(node -p 'require("./lerna.json").version')
           gh pr create --title 'v${version}'\
-            -l "Type: Release" --base main -H
+            -l "Type: Release" --base main \
+            -H release/next
