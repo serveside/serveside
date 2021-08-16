@@ -85,7 +85,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GH
-        run: npm run release -- --yes
+        run: npm run release:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -95,7 +95,7 @@ jobs:
           gh pr comment -b "https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}\
            is released 🎉" ${{github.event.issue.number}}
       - name: complete on issue
-        if: ! github.event.issue.pull_request
+        if: github.event.issue.pull_request != true
         run: |
           gh issue comment -b "https://github.com/${{ github.repository }}/releases/tag/v${{ env.CURRENT_VERSION }}\
            is released 🎉" ${{github.event.issue.number}}
