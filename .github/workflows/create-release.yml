@@ -16,6 +16,7 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 permissions:
   contents: read # for checkout
@@ -39,7 +40,6 @@ jobs:
   npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
-    needs: start
     if: |
       startsWith(github.event.inputs.type, 'create-canary') || 
       startsWith(github.event.inputs.type, 'publish-release')
@@ -91,7 +91,6 @@ jobs:
   gh:
     name: GH
     runs-on: ubuntu-latest
-    needs: start
     if: |
       startsWith(github.event.inputs.type, 'create-canary') || 
       startsWith(github.event.inputs.type, 'publish-release')
@@ -142,7 +141,8 @@ jobs:
 
   deploy-complete:
     name: Publishing Complete
-    needs: 
+    needs:
+      - start
       - gh
       - npm
     runs-on: ubuntu-latest
