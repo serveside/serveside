@@ -3,6 +3,12 @@ name: Create Release Pull Request
 on:
   issue_comment:
     types: [ created ]
+  workflow_dispatch:
+    inputs:
+      type:
+        required: false
+        default: 'release'
+        description: ''
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -18,8 +24,11 @@ jobs:
   createPullRequest:
     name: Create Release Pull Request and tags
     if: |
-      (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') &&
-      startsWith(github.event.comment.body, '/create-release')
+      (github.event.inputs === "release") ||
+      (
+        (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') &&
+        startsWith(github.event.comment.body, '/create-release')
+      )
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
