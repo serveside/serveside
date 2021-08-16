@@ -45,13 +45,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: create release branch
-        uses: peterjgrainger/action-create-branch@v2.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          branch: 'release/next'
-
       - name: Install
         run: npm ci
       - name: Git Identity
@@ -59,6 +52,7 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git checkout -B release/next
+          git push -f -u origin release/next
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
