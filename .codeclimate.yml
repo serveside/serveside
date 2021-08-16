@@ -8,3 +8,5 @@ plugins:
       - .jsx
   fixme:
     enabled: true
+exclude_patterns:
+- "docs/**/*"
