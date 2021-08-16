@@ -27,15 +27,9 @@ jobs:
   start:
     name: Start publishing
     runs-on: ubuntu-latest
-    if: |
-      startsWith(github.event.inputs.type, 'create-canary') || 
-      startsWith(github.event.inputs.type, 'publish-release')
+    if: startsWith(github.event.inputs.type, 'create-canary')
     steps:
-      - uses: peter-evans/commit-comment@v1
-        with:
-          sha: ${{ github.sha }}
-          body: |
-            🎉 Release build started
+      - run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
         
   npm:
     name: Publish to NPM
@@ -141,14 +135,11 @@ jobs:
 
   deploy-complete:
     name: Publishing Complete
+    runs-on: ubuntu-latest
     needs:
       - start
       - gh
       - npm
-    runs-on: ubuntu-latest
+    if: startsWith(github.event.inputs.type, 'create-canary')
     steps:
-      - uses: peter-evans/commit-comment@v1
-        with:
-          sha: ${{ github.sha }}
-          body: |
-            🎉 Release complete!
+      - run: gh pr comment -b "🎉 Release complete" ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
