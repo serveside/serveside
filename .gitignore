@@ -111,3 +111,5 @@ yarn.lock
 
 examples
 packages/**/docs
+
+.npmrc
