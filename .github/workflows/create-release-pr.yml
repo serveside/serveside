@@ -15,7 +15,7 @@ permissions:
 jobs:
   create_release_pr:
     name: Create Release Pull Request and tags
-    if: startsWith(github.event.inputs.type, 'create-release') && github.actor == 'maniator'
+    if: github.actor == 'maniator'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -65,12 +65,7 @@ jobs:
           git fetch origin main
           git push -f -u origin release/next
 
-          if gh pr view;
-          then
-            echo 'PR already created'
-          else
-            gh pr create \
-              --label "Type: Release" \
-              --base main \
-              --draft --fill
-          fi
+          gh pr create \
+            --label "Type: Release" \
+            --base main \
+            --draft --fill
