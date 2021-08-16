@@ -20,7 +20,7 @@
     "versionup:minor": "npm run versionup -- minor",
     "versionup:major": "npm run versionup -- major",
     "postversionup": "npm run commit-version",
-    "commit-version": "HUSKY=0 git add . && git commit --no-verify -S -m \"chore(*): publish `node -p 'require(\"./lerna.json\").version'`\"",
+    "commit-version": "HUSKY=0 git add . && git commit --no-verify -m \"chore(*): publish `node -p 'require(\"./lerna.json\").version'`\"",
     "predeploy": "npm run build",
     "deploy": "lerna publish",
     "release": "npm run deploy -- from-package --create-release github",
