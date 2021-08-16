@@ -1,8 +1,18 @@
-name: 'Release Canary'
+name: Publish module
 
 on:
-  issue_comment:
-    types: [ created ]
+  workflow_dispatch:
+    inputs:
+      type:
+        required: true
+        default: 'create-canary'
+        description: |
+          Default will publish a canary build
+          To publish a real build off main send 'publish-release'
+      pr_number:
+        required: false
+        default: '0'
+        description: 'PR to read from for canary build'
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -17,25 +27,33 @@ jobs:
     name: Start publishing
     runs-on: ubuntu-latest
     if: |
-      (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
-      startsWith(github.event.comment.body, '/canary-release')
+      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'publish-release')
     steps:
-      - name: complete
-        run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.issue.number}} -R ${{ github.repository }}
+      - uses: peter-evans/commit-comment@v1
+        with:
+          sha: ${{ github.sha }}
+          body: |
+            🎉 Release build started
         
-  canary-npm:
-    name: Publish Canary to NPM
+  npm:
+    name: Publish to NPM
     runs-on: ubuntu-latest
     needs: start
     if: |
-      (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
-      startsWith(github.event.comment.body, '/canary-release')
+      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'publish-release')
     steps:
-      - name: checkout
+      - name: checkout canary
+        if: startsWith(github.event.inputs.type, 'create-canary')
         run: |
           gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
-      
+          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
+
+      - name: checkout main
+        if: startsWith(github.event.inputs.type, 'publish-release')
+        uses: actions/checkout@v2
+
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
@@ -58,23 +76,35 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm
+      - name: Publish canary to npm
+        if: startsWith(github.event.inputs.type, 'create-canary')
         run: npm run release:canary:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  canary-gh:
-    name: Publish Canary to GH
+      - name: Publish to GH
+        if: startsWith(github.event.inputs.type, 'publish-release')
+        run: npm run release:ci
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  gh:
+    name: GH
     runs-on: ubuntu-latest
     needs: start
     if: |
-      (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'CONTRIBUTOR') &&
-      startsWith(github.event.comment.body, '/canary-release')
+      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'publish-release')
     steps:
-      - name: checkout
+      - name: checkout canary
+        if: startsWith(github.event.inputs.type, 'create-canary')
         run: |
           gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.issue.number}} -R ${{ github.repository }}
+          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
+
+      - name: checkout main
+        if: startsWith(github.event.inputs.type, 'publish-release')
+        uses: actions/checkout@v2
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
@@ -98,20 +128,27 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to GH
+      - name: Publish canary to GH
+        if: startsWith(github.event.inputs.type, 'create-canary')
         run: npm run release:canary:ci
+        env:
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to GH
+        if: startsWith(github.event.inputs.type, 'publish-release')
+        run: npm run release:ci
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-complete:
     name: Publishing Complete
     needs: 
-      - canary-gh
-      - canary-npm
+      - gh
+      - npm
     runs-on: ubuntu-latest
     steps:
-      - name: complete
-        run: gh pr comment -b "🎉 Canary Release complete!" ${{github.event.issue.number}} -R ${{ github.repository }}
-      - name: failure
-        if: ${{ failure() || cancelled() }}
-        run: gh pr comment -b "Some error happened on publish. Please check the action logs" ${{github.event.issue.number}} -R ${{ github.repository }}
+      - uses: peter-evans/commit-comment@v1
+        with:
+          sha: ${{ github.sha }}
+          body: |
+            🎉 Release complete!

@@ -1,13 +1,11 @@
-name: Create Release Pull Request
+name: Create Release
 
 on:
-  issue_comment:
-    types: [ created ]
   workflow_dispatch:
     inputs:
       type:
         required: false
-        default: '/create-release'
+        default: 'create-release'
         description: ''
 
 env:
@@ -21,14 +19,9 @@ permissions:
   packages: write # for publish
 
 jobs:
-  createPullRequest:
+  create_release_pr:
     name: Create Release Pull Request and tags
-    if: |
-      (startsWith(github.event.inputs.type, '/create-release')) ||
-      (
-        (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') &&
-        startsWith(github.event.comment.body, '/create-release')
-      )
+    if: startsWith(github.event.inputs.type, 'create-release')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -61,7 +54,6 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git checkout -B release/next
-          git push -f -u origin release/next
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -74,8 +66,15 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        shell: bash -ex {0}
+        shell: bash -x {0}
         run: |
-          gh pr create \
-            --label "Type: Release" --base main \
-            --head release/next --draft --fill
+          git fetch origin main
+          git push -f -u origin release/next
+
+          if !gh pr view;
+          then
+            gh pr create \
+              --label "Type: Release" \
+              --base main \
+              --draft --fill
+          fi
