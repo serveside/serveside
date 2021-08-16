@@ -68,9 +68,10 @@ jobs:
           if gh pr view;
           then
             echo 'PR already created'
-          else
-            gh pr create \
-              --label "Type: Release" \
-              --base main \
-              --draft --fill
+            gh pr close release/next
           fi
+
+          gh pr create \
+            --label "Type: Release" \
+            --base main \
+            --draft --fill
