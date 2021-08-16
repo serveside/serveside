@@ -27,7 +27,7 @@ jobs:
     name: Start publishing
     runs-on: ubuntu-latest
     if: |
-      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'create-canary') || 
       startsWith(github.event.inputs.type, 'publish-release')
     steps:
       - uses: peter-evans/commit-comment@v1
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: start
     if: |
-      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'create-canary') || 
       startsWith(github.event.inputs.type, 'publish-release')
     steps:
       - name: checkout canary
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: start
     if: |
-      startsWith(github.event.inputs.type, 'create-canary') || \
+      startsWith(github.event.inputs.type, 'create-canary') || 
       startsWith(github.event.inputs.type, 'publish-release')
     steps:
       - name: checkout canary
