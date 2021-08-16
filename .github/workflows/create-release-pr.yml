@@ -68,4 +68,5 @@ jobs:
           gh pr create \
             --label "Type: Release" \
             --base main \
-            --draft --fill
+            --draft --fill \
+            -a ${{ github.actor }}
