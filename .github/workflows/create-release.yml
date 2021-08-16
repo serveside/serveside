@@ -27,7 +27,7 @@ jobs:
   start:
     name: Start publishing
     runs-on: ubuntu-latest
-    if: startsWith(github.event.inputs.type, 'create-canary')
+    if: startsWith(github.event.inputs.type, 'create-canary') && github.actor == 'maniator'
     steps:
       - run: gh pr comment -b "🎉 Canary Release build started" ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
         
@@ -35,8 +35,11 @@ jobs:
     name: Publish to NPM
     runs-on: ubuntu-latest
     if: |
-      startsWith(github.event.inputs.type, 'create-canary') || 
-      startsWith(github.event.inputs.type, 'publish-release')
+      (
+        startsWith(github.event.inputs.type, 'create-canary') || 
+        startsWith(github.event.inputs.type, 'publish-release') 
+      ) && 
+      github.actor == 'maniator'
     steps:
       - name: checkout canary
         if: startsWith(github.event.inputs.type, 'create-canary')
@@ -86,8 +89,11 @@ jobs:
     name: GH
     runs-on: ubuntu-latest
     if: |
-      startsWith(github.event.inputs.type, 'create-canary') || 
-      startsWith(github.event.inputs.type, 'publish-release')
+      (
+        startsWith(github.event.inputs.type, 'create-canary') || 
+        startsWith(github.event.inputs.type, 'publish-release') 
+      ) && 
+      github.actor == 'maniator'
     steps:
       - name: checkout canary
         if: startsWith(github.event.inputs.type, 'create-canary')
@@ -140,6 +146,6 @@ jobs:
       - start
       - gh
       - npm
-    if: startsWith(github.event.inputs.type, 'create-canary')
+    if: startsWith(github.event.inputs.type, 'create-canary') && github.actor == 'maniator'
     steps:
       - run: gh pr comment -b "🎉 Release complete" ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
