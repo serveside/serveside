@@ -9,4 +9,6 @@ plugins:
   fixme:
     enabled: true
 exclude_patterns:
-- "docs/**/*"
+- dist/
+- docs/
+- node_modules/
