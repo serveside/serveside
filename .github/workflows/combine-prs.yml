@@ -119,7 +119,11 @@ jobs:
           
           git branch $COMBINE_BRANCH_NAME $basebranch
           git checkout $COMBINE_BRANCH_NAME
-          git pull origin $sourcebranches --no-edit
+          git pull origin $sourcebranches --no-edit > /dev/null 2>&1
+          git checkout HEAD -- package-lock.json
+          npm install
+          git add .
+          GIT_EDITOR=/bin/true git merge --continue
           git push origin $COMBINE_BRANCH_NAME
       # Creates a PR with the new combined branch
       - uses: actions/github-script@v3
