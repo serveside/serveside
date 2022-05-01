@@ -1,18 +1,22 @@
 name: Dependabot Auto merge
 
 on:
-  pull_request
+  pull_request_target
     
 jobs:
-  auto-approve:
+  auto-merge:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     if: github.actor == 'dependabot[bot]'
     steps:
-      - uses: hmarr/auto-approve-action@v2
+      - name: 'Checkout repository'
+        uses: actions/checkout@v2
+      - name: 'Approve pull request'
+        uses: hmarr/auto-approve-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+      - name: 'Auto merge pull request'
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
