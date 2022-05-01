@@ -66,7 +66,7 @@
     "eslint-plugin-svelte3": "^3.2.0",
     "eslint-plugin-vue": "^7.16.0",
     "express": "^4.17.1",
-    "graphql": "^15.5.1",
+    "graphql": "^16.4.0",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
     "jsdoc": "^3.6.7",
