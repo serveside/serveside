@@ -37,7 +37,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
