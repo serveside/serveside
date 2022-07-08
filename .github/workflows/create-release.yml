@@ -64,14 +64,9 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Install
-        run: npm ci
-
-#      - name: Authenticate with NPM Registry
-#        run: |
-#          echo "@serveside:registry=https://registry.npmjs.org/" > .npmrc
-#          echo "registry=https://registry.npmjs.org/" >> .npmrc
-#          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-#          npm whoami
+        run: |
+          npm ci
+          npx lerna bootstrap
 
       - name: Publish canary to npm
         if: startsWith(github.event.inputs.type, 'create-canary')
@@ -117,7 +112,9 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install
-        run: npm ci
+        run: |
+          npm ci
+          npx lerna bootstrap
 
       - name: Publish canary to GH
         if: startsWith(github.event.inputs.type, 'create-canary')

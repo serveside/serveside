@@ -33,8 +33,7 @@
     "url": "https://github.com/serveside/serveside.git"
   },
   "engines": {
-    "yarn": ">=1 <2",
-    "node": ">=10"
+    "node": ">=12"
   },
   "dependencies": {
     "lerna": "^5.1.8"
