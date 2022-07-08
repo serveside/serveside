@@ -41,21 +41,18 @@ jobs:
       ) && 
       github.actor == 'maniator'
     steps:
-      - name: checkout canary
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: canary pr
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
-      - name: checkout main
-        if: startsWith(github.event.inputs.type, 'publish-release')
-        uses: actions/checkout@v2
+        run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
 
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Setup Node ${{ steps.nvm.outputs.NVMRC }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
           registry-url: 'https://npm.pkg.github.com'
@@ -66,8 +63,8 @@ jobs:
 
       - name: Authenticate with NPM Registry
         run: |
-          echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
-          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "@serveside:registry=https://registry.npmjs.org/" > .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
         env:
@@ -95,21 +92,18 @@ jobs:
       ) && 
       github.actor == 'maniator'
     steps:
-      - name: checkout canary
+      - name: checkout
+        uses: actions/checkout@v3
+      
+      - name: canary pr
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
-      - name: checkout main
-        if: startsWith(github.event.inputs.type, 'publish-release')
-        uses: actions/checkout@v2
+        run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Setup Node ${{ steps.nvm.outputs.NVMRC }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
           registry-url: 'https://npm.pkg.github.com'
