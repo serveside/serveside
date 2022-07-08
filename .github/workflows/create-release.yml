@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       type:
+        type: choice
+        options:
+          - create-canary
+          - publish-release
         required: true
         default: create-canary
         description: |
