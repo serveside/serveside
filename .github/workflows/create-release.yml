@@ -62,11 +62,10 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           scope: "@serveside"
       - name: Install dependencies
-        run: npx lerna bootstrap
+        run: npm ci
       - name: Publish canary to npm
         if: startsWith(github.event.inputs.type, 'create-canary')
         run: npm run release:canary:ci
-
       - name: Publish to npm
         if: startsWith(github.event.inputs.type, 'publish-release')
         run: npm run release:ci
