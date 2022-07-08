@@ -50,7 +50,6 @@ jobs:
         if: startsWith(github.event.inputs.type, 'create-canary')
         run: |
           gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-          git merge origin/main
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
