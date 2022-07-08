@@ -1,6 +1,17 @@
 name: Create Release
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: Type of release
+        default: patch
+        required: true
+        options:
+          - patch
+          - minor
+          - major
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,13 +58,13 @@ jobs:
         run: |
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
-          git checkout -B release/next
+          git checkout -B release/next_${{github.event.inputs.release_type}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Versionup commit
         run: |
-          npm run version:ci
+          npm run version:ci -- ${{github.event.inputs.release_type}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -66,7 +77,7 @@ jobs:
           git push -f -u origin release/next
 
           gh pr create \
-            --label "Type: Release" \
+            --label "Type: Release ${{github.event.inputs.release_type}}" \
             --base main \
             --draft --fill \
             -a ${{ github.actor }}

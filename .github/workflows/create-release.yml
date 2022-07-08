@@ -5,14 +5,14 @@ on:
     inputs:
       type:
         required: true
-        default: 'create-canary'
+        default: create-canary
         description: |
           Default will publish a canary build
           To publish a real build off main send 'publish-release'
       pr_number:
         required: false
         default: '0'
-        description: 'PR to read from for canary build'
+        description: PR to read from for canary build
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
-          registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
       - name: Install
@@ -87,7 +87,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   gh:
-    name: GH
+    name: Publish to GH
     runs-on: ubuntu-latest
     if: |
       (
