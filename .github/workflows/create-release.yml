@@ -122,7 +122,7 @@ jobs:
           npm whoami
           npm run release:canary:ci
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GH
         if: startsWith(github.event.inputs.type, 'publish-release')
@@ -130,7 +130,7 @@ jobs:
           npm whoami
           npm run release:ci
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-complete:
     name: Publishing Complete
