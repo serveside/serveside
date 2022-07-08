@@ -116,13 +116,6 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Authenticate with GH Registry
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
-          echo "@serveside:registry=https://npm.pkg.github.com/" > .npmrc
-          echo "registry=https://npm.pkg.github.com/" >> .npmrc
-          npm whoami
-
       - name: Publish canary to GH
         if: startsWith(github.event.inputs.type, 'create-canary')
         run: |
