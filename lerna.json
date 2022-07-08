@@ -7,6 +7,9 @@
   "command": {
     "version": {
       "message": "chore(*): release %v"
+    },
+    "publish": {
+      "verifyAccess": false
     }
   },
   "useNx": false
