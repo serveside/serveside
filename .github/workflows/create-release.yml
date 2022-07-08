@@ -120,7 +120,6 @@ jobs:
         run: |
           echo "@serveside:registry=https://npm.pkg.github.com/" > .npmrc
           echo "registry=https://npm.pkg.github.com/" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
           npm whoami
 
       - name: Publish canary to GH
