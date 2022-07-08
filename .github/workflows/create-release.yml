@@ -41,14 +41,7 @@ jobs:
       ) && 
       github.actor == 'maniator'
     steps:
-      - name: checkout canary
-        if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
-      - name: checkout main
-        if: startsWith(github.event.inputs.type, 'publish-release')
+      - name: checkout
         uses: actions/checkout@v3
 
       - name: Read .nvmrc
@@ -95,14 +88,7 @@ jobs:
       ) && 
       github.actor == 'maniator'
     steps:
-      - name: checkout canary
-        if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          gh repo clone ${{ github.repository }} . -- --depth 1
-          gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
-      - name: checkout main
-        if: startsWith(github.event.inputs.type, 'publish-release')
+      - name: checkout
         uses: actions/checkout@v3
       
       - name: Read .nvmrc
