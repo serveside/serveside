@@ -72,13 +72,17 @@ jobs:
 
       - name: Publish canary to npm
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: npm run release:canary:ci
+        run: |
+          npm whoami
+          npm run release:canary:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
         if: startsWith(github.event.inputs.type, 'publish-release')
-        run: npm run release:ci
+        run: |
+          npm whoami
+          npm run release:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -123,13 +127,17 @@ jobs:
 
       - name: Publish canary to GH
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: npm run release:canary:ci
+        run: |
+          npm whoami
+          npm run release:canary:ci
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GH
         if: startsWith(github.event.inputs.type, 'publish-release')
-        run: npm run release:ci
+        run: |
+          npm whoami
+          npm run release:ci
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
