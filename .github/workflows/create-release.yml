@@ -49,13 +49,13 @@ jobs:
 
       - name: checkout main
         if: startsWith(github.event.inputs.type, 'publish-release')
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Setup Node ${{ steps.nvm.outputs.NVMRC }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
           registry-url: 'https://npm.pkg.github.com'
@@ -66,8 +66,8 @@ jobs:
 
       - name: Authenticate with NPM Registry
         run: |
-          echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
-          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "@serveside:registry=https://registry.npmjs.org/" > .npmrc
+          echo "registry=https://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
         env:
@@ -103,13 +103,13 @@ jobs:
 
       - name: checkout main
         if: startsWith(github.event.inputs.type, 'publish-release')
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
       - name: Setup Node ${{ steps.nvm.outputs.NVMRC }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
           registry-url: 'https://npm.pkg.github.com'
