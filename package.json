@@ -25,7 +25,7 @@
     "deploy": "lerna publish",
     "release": "npm run deploy -- from-package --create-release github",
     "release:ci": "npm run release -- --yes",
-    "release:canary": "npm run deploy -- from-package --canary --preid alpha --force-publish",
+    "release:canary": "npm run deploy -- --canary --preid next --force-publish",
     "release:canary:ci": "npm run release:canary -- --yes"
   },
   "repository": {
