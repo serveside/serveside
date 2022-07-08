@@ -43,6 +43,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+        
+      - name: canary pr
+        if: startsWith(github.event.inputs.type, 'create-canary')
+        run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
 
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
@@ -90,6 +94,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      
+      - name: canary pr
+        if: startsWith(github.event.inputs.type, 'create-canary')
+        run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
       
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
