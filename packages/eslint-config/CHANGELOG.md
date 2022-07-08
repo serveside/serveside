@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2022-07-08)
+
+
+### Features
+
+* gh deploy ([ffd8e88](https://github.com/serveside/serveside/commit/ffd8e88f680d3d62c6250da8d6976e043446a60d))
+
+
+
+
+
 ## 0.1.2 (2022-07-08)
 
 **Note:** Version bump only for package @shared/eslint-config
