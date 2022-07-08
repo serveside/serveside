@@ -46,11 +46,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-
       - name: canary pr
         if: startsWith(github.event.inputs.type, 'create-canary')
         run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
@@ -62,23 +60,16 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
           token: ${{ secrets.NPM_TOKEN }}
-
-      - name: Install
-        run: |
-          npm ci
-          npx lerna bootstrap
-
+          scope: "@serveside"
+      - name: Install dependencies
+        run: npx lerna bootstrap
       - name: Publish canary to npm
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          npm whoami
-          npm run release:canary:ci
+        run: npm run release:canary:ci
 
       - name: Publish to npm
         if: startsWith(github.event.inputs.type, 'publish-release')
-        run: |
-          npm whoami
-          npm run release:ci
+        run: npm run release:ci
 
   gh:
     name: Publish to GH
@@ -95,11 +86,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-
       - name: canary pr
         if: startsWith(github.event.inputs.type, 'create-canary')
         run: gh pr checkout ${{github.event.inputs.pr_number}} -R ${{ github.repository }}
-
       - name: Read .nvmrc
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
@@ -111,22 +100,15 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install
-        run: |
-          npm ci
-          npx lerna bootstrap
-
+          scope: "@serveside"
+      - name: Install dependencies
+        run: npm ci
       - name: Publish canary to GH
         if: startsWith(github.event.inputs.type, 'create-canary')
-        run: |
-          npm whoami
-          npm run release:canary:ci
-
+        run: npm run release:canary:ci
       - name: Publish to GH
         if: startsWith(github.event.inputs.type, 'publish-release')
-        run: |
-          npm whoami
-          npm run release:ci
+        run: npm run release:ci
 
   deploy-complete:
     name: Publishing Complete
