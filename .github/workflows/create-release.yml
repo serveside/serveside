@@ -76,7 +76,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to GH
+      - name: Publish to npm
         if: startsWith(github.event.inputs.type, 'publish-release')
         run: npm run release:ci
         env:
