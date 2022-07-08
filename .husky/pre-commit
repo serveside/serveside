@@ -1,8 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-lerna run precommit --concurrency 2 --stream
+npx lerna run precommit --concurrency 2 --stream
 # TODO: fix lint issues
-lerna run lint || true
+npx lerna run lint || true
 npm run docs
 git add docs

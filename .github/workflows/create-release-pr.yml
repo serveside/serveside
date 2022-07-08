@@ -28,6 +28,11 @@ jobs:
     name: Create Release Pull Request and tags
     if: github.actor == 'maniator'
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      RELEASE_BRANCH: release/next_${{ github.event.inputs.release_type }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,18 +44,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version:  ${{ steps.nvm.outputs.NVMRC }}
-          registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
           token: ${{ secrets.NPM_TOKEN }}
+
       - name: Authenticate with Registry
         run: |
           echo "@serveside:registry=http://registry.npmjs.org/" > .npmrc
           echo "registry=http://registry.npmjs.org/" >> .npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
           npm whoami
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install
         run: npm ci
@@ -59,28 +62,20 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git checkout -B $RELEASE_BRANCH
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_BRANCH: release/next_${{ github.event.inputs.release_type }}
 
       - name: Versionup commit
         run: |
           npm run version:ci -- ${{github.event.inputs.release_type}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Pull Request
         id: cpr
         shell: bash -x {0}
-        env:
-          RELEASE_BRANCH: release/next_${{ github.event.inputs.release_type }}
         run: |
           git fetch origin main
           git push -f -u origin $RELEASE_BRANCH
 
           gh pr create \
-            --label "Type: Release ${{github.event.inputs.release_type}}" \
+            --label "Type: Release [${{github.event.inputs.release_type}}]" \
             --base main \
             --draft --fill \
             -a ${{ github.actor }}
