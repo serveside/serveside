@@ -14,7 +14,7 @@
     "docdash": "^1.2.0",
     "eslint": "^7.32.0",
     "jsdoc": "^3.6.7",
-    "lint-staged": "^11.1.2"
+    "lint-staged": "^13.2.1"
   },
   "dependencies": {
     "eslint-plugin-jsdoc": "^43.0.0"
