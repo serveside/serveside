@@ -11,4 +11,12 @@ This is an express.js ssr as a service implementation for existing sites that wa
 
 
 ## check The  Documentation
+CLICK THE BELLOW LINK -
+
+
 [Documentation for the cli and internals can be seen here](https://api.serveside.dev)
+
+![Screenshot 2023-10-02 162112](https://github.com/Sahil1786/Petari/assets/111786720/12f7e56b-1096-4a6d-b79a-bd7f7c2a3e68)
+
+![Screenshot 2023-10-02 162122](https://github.com/Sahil1786/Petari/assets/111786720/6cfabd77-ac99-42c3-87b7-243ab4283e9c)
+
