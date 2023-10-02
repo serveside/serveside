@@ -10,5 +10,5 @@
 This is an express.js ssr as a service implementation for existing sites that want to start to use a component library (with react or vue) along with ssr to embed on their sites
 
 
-## check the  Documentation
+## check The  Documentation
 [Documentation for the cli and internals can be seen here](https://api.serveside.dev)
