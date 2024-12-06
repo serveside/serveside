@@ -75,7 +75,7 @@
     "prettier": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-is": "^18.1.0",
+    "react-is": "^19.0.0",
     "svelte": "^5.0.5",
     "vue": "^3.2.33",
     "vue-server-renderer": "^2.6.14"
