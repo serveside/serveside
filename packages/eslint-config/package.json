@@ -17,6 +17,6 @@
     "lint-staged": "^13.2.1"
   },
   "dependencies": {
-    "eslint-plugin-jsdoc": "^52.0.0"
+    "eslint-plugin-jsdoc": "^53.0.1"
   }
 }
