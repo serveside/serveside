@@ -34,7 +34,7 @@
     "chalk": "^4.1.2",
     "find-up": "^5.0.0",
     "install-packages": "^0.2.5",
-    "yargs": "^17.1.0"
+    "yargs": "^17.1.1"
   },
   "devDependencies": {
     "@shared/eslint-config": "^0.2.0",
